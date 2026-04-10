@@ -19,11 +19,18 @@
         <!-- Brand -->
         <div class="md:col-span-2">
           <a href="#" class="inline-flex items-center gap-3 mb-5">
-            <img
-              :src="logoSrc"
-              alt="Y.B. Gipser GmbH Logo"
-              class="h-12 w-auto object-contain brightness-0 invert opacity-90"
-            />
+            <div class="w-11 h-11 rounded-xl overflow-hidden border border-stone-700 flex-shrink-0 bg-white/10">
+              <img :src="logoSrc" alt="Y.B. Gipser GmbH" class="w-full h-full object-cover opacity-90 brightness-0 invert" />
+            </div>
+            <div class="w-px h-8 bg-stone-700" />
+            <div class="leading-tight">
+              <div class="text-white font-bold text-[15px] tracking-tight leading-none">
+                Y.B. Gipser <span class="text-amber-400">GmbH</span>
+              </div>
+              <div class="text-stone-500 text-[10px] font-medium tracking-widest uppercase mt-1 leading-none">
+                Trockenbau · Verputze · Fassaden
+              </div>
+            </div>
           </a>
           <p class="text-stone-400 text-sm leading-relaxed max-w-xs mb-6">
             Ihr Meisterbetrieb für professionellen Trockenbau, Verputze und

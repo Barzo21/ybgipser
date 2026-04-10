@@ -7,14 +7,28 @@
         : 'bg-white/85 backdrop-blur-md'
     "
   >
-    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <div class="max-w-6xl mx-auto px-6 h-[68px] flex items-center justify-between">
       <!-- Logo -->
       <a href="#" class="flex items-center gap-3 group">
-        <img
-          :src="logoSrc"
-          alt="Y.B. Gipser GmbH Logo"
-          class="h-10 w-auto object-contain transition-opacity duration-200 group-hover:opacity-80"
-        />
+        <!-- Logo image in clean white container -->
+        <div class="w-11 h-11 rounded-xl overflow-hidden border border-stone-200 shadow-sm bg-white flex-shrink-0 group-hover:shadow-md transition-shadow">
+          <img
+            :src="logoSrc"
+            alt="Y.B. Gipser GmbH"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <!-- Divider -->
+        <div class="w-px h-8 bg-stone-200 hidden sm:block" />
+        <!-- Brand text -->
+        <div class="hidden sm:block leading-tight">
+          <div class="text-stone-900 font-bold text-[15px] tracking-tight leading-none">
+            Y.B. Gipser <span class="text-amber-500">GmbH</span>
+          </div>
+          <div class="text-stone-400 text-[10px] font-medium tracking-widest uppercase mt-1 leading-none">
+            Trockenbau · Verputze · Fassaden
+          </div>
+        </div>
       </a>
 
       <!-- Desktop links -->
