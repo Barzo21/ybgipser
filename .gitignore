@@ -1,0 +1,30 @@
+# Nuxt
+.nuxt
+.output
+.data
+.cache
+dist
+
+# Node
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Env
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Vercel
+.vercel
