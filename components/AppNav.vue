@@ -11,7 +11,7 @@
       <!-- Logo -->
       <a href="#" class="flex items-center gap-3 group">
         <img
-          :src="'/ybgicserlogo.jpeg'"
+          :src="logoSrc"
           alt="Y.B. Gipser GmbH Logo"
           class="h-10 w-auto object-contain transition-opacity duration-200 group-hover:opacity-80"
         />
@@ -94,6 +94,7 @@
 <script setup lang="ts">
 const scrolled = ref(false)
 const menuOpen = ref(false)
+const logoSrc = '/ybgicserlogo.jpeg'
 
 const navLinks = [
   { href: '#ueber-uns', label: 'Über uns' },

@@ -20,7 +20,7 @@
         <div class="md:col-span-2">
           <a href="#" class="inline-flex items-center gap-3 mb-5">
             <img
-              :src="'/ybgicserlogo.jpeg'"
+              :src="logoSrc"
               alt="Y.B. Gipser GmbH Logo"
               class="h-12 w-auto object-contain brightness-0 invert opacity-90"
             />
@@ -87,6 +87,7 @@
 
 <script setup lang="ts">
 const currentYear = new Date().getFullYear()
+const logoSrc = '/ybgicserlogo.jpeg'
 const socials = [
   { label: 'Facebook', abbr: 'f' },
   { label: 'Instagram', abbr: 'ig' },
