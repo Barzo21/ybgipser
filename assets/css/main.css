@@ -6,7 +6,7 @@ html {
 
 body {
   background-color: #ffffff;
-  color: #0f172a;
+  color: #1c1c1c;
 }
 
 /* ─── Scroll Reveal ─────────────────────────────────── */
@@ -39,10 +39,10 @@ body {
 }
 
 /* ─── Glow Text ─────────────────────────────────────── */
-.glow-blue {
+.glow-yellow {
   text-shadow:
-    0 0 20px rgba(59, 130, 246, 0.4),
-    0 0 40px rgba(59, 130, 246, 0.2);
+    0 0 20px rgba(245, 158, 11, 0.35),
+    0 0 40px rgba(245, 158, 11, 0.15);
 }
 
 /* ─── Keyframes ─────────────────────────────────────── */
@@ -54,20 +54,20 @@ body {
 @keyframes glowPulse {
   0%, 100% {
     box-shadow:
-      0 0 12px rgba(59, 130, 246, 0.35),
-      0 0 24px rgba(59, 130, 246, 0.12);
+      0 0 14px rgba(245, 158, 11, 0.45),
+      0 0 28px rgba(245, 158, 11, 0.18);
   }
   50% {
     box-shadow:
-      0 0 20px rgba(59, 130, 246, 0.6),
-      0 0 40px rgba(59, 130, 246, 0.25),
-      0 0 60px rgba(59, 130, 246, 0.08);
+      0 0 22px rgba(245, 158, 11, 0.7),
+      0 0 44px rgba(245, 158, 11, 0.3),
+      0 0 66px rgba(245, 158, 11, 0.1);
   }
 }
 
-@keyframes electricPulse {
+@keyframes subtlePulse {
   0%, 100% { opacity: 1; }
-  50%       { opacity: 0.3; }
+  50%       { opacity: 0.4; }
 }
 
 @keyframes scrollBounce {
@@ -75,9 +75,9 @@ body {
   50%       { transform: translateY(6px); opacity: 1; }
 }
 
-@keyframes menuSlide {
-  from { opacity: 0; transform: translateY(-8px); }
-  to   { opacity: 1; transform: translateY(0); }
+@keyframes strokeFlow {
+  from { stroke-dashoffset: 600; }
+  to   { stroke-dashoffset: 0; }
 }
 
 /* ─── Animation Utilities ───────────────────────────── */
@@ -89,20 +89,16 @@ body {
   animation: glowPulse 2.5s ease-in-out infinite;
 }
 
-.animate-electric-pulse {
-  animation: electricPulse 1.2s ease-in-out infinite;
+.animate-subtle-pulse {
+  animation: subtlePulse 2s ease-in-out infinite;
 }
 
 .animate-scroll-bounce {
   animation: scrollBounce 1.5s ease-in-out infinite;
 }
 
-.animate-menu-slide {
-  animation: menuSlide 0.2s ease-out forwards;
-}
-
 /* ─── Scrollbar ─────────────────────────────────────── */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #f1f5f9; }
-::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
+::-webkit-scrollbar-track { background: #f5f5f0; }
+::-webkit-scrollbar-thumb { background: #d4b44a; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #f59e0b; }

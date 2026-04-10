@@ -3,13 +3,13 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   modules: ['@nuxt/ui'],
   colorMode: {
-    preference: 'dark',
-    fallback: 'dark',
+    preference: 'light',
+    fallback: 'light',
   },
   css: ['~/assets/css/main.css'],
   app: {
     head: {
-      title: 'ElektroProfi – Ihr Elektrofachbetrieb',
+      title: 'Y.B. Gipser GmbH – Trockenbau · Verputze · Fassaden',
       htmlAttrs: { lang: 'de' },
       meta: [
         { charset: 'utf-8' },
@@ -17,9 +17,9 @@ export default defineNuxtConfig({
         {
           name: 'description',
           content:
-            'ElektroProfi – Professionelle Elektroinstallation, Wartung, Smart Home und Reparaturen in Ihrer Region. Schnell, zuverlässig, modern.',
+            'Y.B. Gipser GmbH – Ihr Spezialist für Trockenbau, Innenputz, Außenputz und Fassadengestaltung. Meisterbetrieb mit höchster Qualität und Präzision.',
         },
-        { name: 'theme-color', content: '#0f172a' },
+        { name: 'theme-color', content: '#ffffff' },
       ],
       link: [
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },

@@ -3,23 +3,27 @@
     class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
     :class="
       scrolled
-        ? 'bg-white/95 backdrop-blur-xl border-b border-slate-200 shadow-sm shadow-slate-100'
-        : 'bg-white/80 backdrop-blur-md'
+        ? 'bg-white/95 backdrop-blur-xl border-b border-stone-200 shadow-sm shadow-stone-100'
+        : 'bg-white/85 backdrop-blur-md'
     "
   >
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
       <!-- Logo -->
-      <a href="#" class="flex items-center gap-2.5 group">
+      <a href="#" class="flex items-center gap-3 group">
+        <!-- YB monogram badge -->
         <div
-          class="w-8 h-8 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center shadow-md shadow-blue-200 group-hover:shadow-blue-300 transition-shadow"
+          class="w-9 h-9 bg-gradient-to-br from-amber-400 to-yellow-500 rounded-xl flex items-center justify-center shadow-md shadow-amber-200/60 group-hover:shadow-amber-300/80 transition-shadow"
         >
-          <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-          </svg>
+          <span class="text-white font-extrabold text-sm tracking-tighter leading-none">YB</span>
         </div>
-        <span class="text-slate-900 font-bold text-lg tracking-tight">
-          Elektro<span class="text-blue-500">Profi</span>
-        </span>
+        <div class="leading-tight">
+          <div class="text-stone-900 font-bold text-base tracking-tight leading-none">
+            Y.B. Gipser <span class="text-amber-500">GmbH</span>
+          </div>
+          <div class="text-stone-400 text-[10px] font-medium tracking-wider uppercase leading-none mt-0.5">
+            Trockenbau · Verputze · Fassaden
+          </div>
+        </div>
       </a>
 
       <!-- Desktop links -->
@@ -28,11 +32,11 @@
           v-for="link in navLinks"
           :key="link.href"
           :href="link.href"
-          class="text-slate-500 hover:text-slate-900 text-sm font-medium transition-colors duration-200 relative group"
+          class="text-stone-500 hover:text-stone-900 text-sm font-medium transition-colors duration-200 relative group"
         >
           {{ link.label }}
           <span
-            class="absolute -bottom-0.5 left-0 w-0 h-px bg-blue-500 transition-all duration-300 group-hover:w-full"
+            class="absolute -bottom-0.5 left-0 w-0 h-px bg-amber-500 transition-all duration-300 group-hover:w-full"
           />
         </a>
       </div>
@@ -41,27 +45,27 @@
       <div class="flex items-center gap-3">
         <a
           href="#kontakt"
-          class="hidden md:block px-5 py-2.5 bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-sm font-semibold rounded-xl hover:from-blue-500 hover:to-cyan-500 transition-all duration-300 shadow-md shadow-blue-200 hover:shadow-blue-300"
+          class="hidden md:block px-5 py-2.5 bg-gradient-to-r from-amber-500 to-yellow-400 text-white text-sm font-semibold rounded-xl hover:from-amber-400 hover:to-yellow-300 transition-all duration-300 shadow-md shadow-amber-200 hover:shadow-amber-300"
         >
-          Kontakt
+          Angebot anfragen
         </a>
 
-        <!-- Hamburger button (mobile only) -->
+        <!-- Hamburger -->
         <button
-          class="md:hidden relative w-9 h-9 flex flex-col items-center justify-center gap-1.5 rounded-lg hover:bg-slate-100 transition-colors"
+          class="md:hidden relative w-9 h-9 flex flex-col items-center justify-center gap-1.5 rounded-lg hover:bg-stone-100 transition-colors"
           :aria-label="menuOpen ? 'Menü schließen' : 'Menü öffnen'"
           @click="menuOpen = !menuOpen"
         >
           <span
-            class="block w-5 h-0.5 bg-slate-700 rounded-full transition-all duration-300 origin-center"
+            class="block w-5 h-0.5 bg-stone-700 rounded-full transition-all duration-300 origin-center"
             :class="menuOpen ? 'rotate-45 translate-y-[7px]' : ''"
           />
           <span
-            class="block w-5 h-0.5 bg-slate-700 rounded-full transition-all duration-300"
+            class="block w-5 h-0.5 bg-stone-700 rounded-full transition-all duration-300"
             :class="menuOpen ? 'opacity-0 scale-x-0' : ''"
           />
           <span
-            class="block w-5 h-0.5 bg-slate-700 rounded-full transition-all duration-300 origin-center"
+            class="block w-5 h-0.5 bg-stone-700 rounded-full transition-all duration-300 origin-center"
             :class="menuOpen ? '-rotate-45 -translate-y-[7px]' : ''"
           />
         </button>
@@ -70,27 +74,24 @@
 
     <!-- Mobile menu -->
     <Transition name="mobile-menu">
-      <div
-        v-if="menuOpen"
-        class="md:hidden bg-white border-t border-slate-100 shadow-lg"
-      >
+      <div v-if="menuOpen" class="md:hidden bg-white border-t border-stone-100 shadow-lg">
         <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-1">
           <a
             v-for="link in navLinks"
             :key="link.href"
             :href="link.href"
-            class="px-4 py-3 text-slate-700 font-medium text-sm rounded-xl hover:bg-blue-50 hover:text-blue-600 transition-colors"
+            class="px-4 py-3 text-stone-700 font-medium text-sm rounded-xl hover:bg-amber-50 hover:text-amber-700 transition-colors"
             @click="menuOpen = false"
           >
             {{ link.label }}
           </a>
-          <div class="mt-2 pt-3 border-t border-slate-100">
+          <div class="mt-2 pt-3 border-t border-stone-100">
             <a
               href="#kontakt"
-              class="block w-full text-center px-5 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-sm font-semibold rounded-xl hover:from-blue-500 hover:to-cyan-500 transition-all duration-300 shadow-md shadow-blue-200"
+              class="block w-full text-center px-5 py-3 bg-gradient-to-r from-amber-500 to-yellow-400 text-white text-sm font-semibold rounded-xl hover:from-amber-400 hover:to-yellow-300 transition-all duration-300 shadow-md shadow-amber-200"
               @click="menuOpen = false"
             >
-              Kontakt aufnehmen ⚡
+              Kostenloses Angebot anfordern
             </a>
           </div>
         </div>
@@ -111,24 +112,15 @@ const navLinks = [
 ]
 
 onMounted(() => {
-  const onScroll = () => {
-    scrolled.value = window.scrollY > 60
-  }
+  const onScroll = () => { scrolled.value = window.scrollY > 60 }
   window.addEventListener('scroll', onScroll, { passive: true })
   onUnmounted(() => window.removeEventListener('scroll', onScroll))
 })
 </script>
 
 <style scoped>
-.mobile-menu-enter-active {
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.mobile-menu-leave-active {
-  transition: all 0.2s ease-in;
-}
+.mobile-menu-enter-active { transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
+.mobile-menu-leave-active { transition: all 0.2s ease-in; }
 .mobile-menu-enter-from,
-.mobile-menu-leave-to {
-  opacity: 0;
-  transform: translateY(-10px);
-}
+.mobile-menu-leave-to    { opacity: 0; transform: translateY(-10px); }
 </style>

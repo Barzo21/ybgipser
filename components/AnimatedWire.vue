@@ -1,4 +1,5 @@
 <template>
+  <!-- Paint brush stroke animation – matches Y.B. Gipser logo motif -->
   <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
     <svg
       class="w-full h-full"
@@ -7,161 +8,146 @@
       xmlns="http://www.w3.org/2000/svg"
     >
       <defs>
-        <!-- Soft glow filter -->
-        <filter id="wire-glow" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="3.5" result="blur" />
+        <filter id="stroke-glow" x="-40%" y="-40%" width="180%" height="180%">
+          <feGaussianBlur stdDeviation="4" result="blur" />
           <feMerge>
             <feMergeNode in="blur" />
             <feMergeNode in="SourceGraphic" />
           </feMerge>
         </filter>
-        <!-- Strong glow for sparks -->
-        <filter id="spark-glow" x="-200%" y="-200%" width="500%" height="500%">
-          <feGaussianBlur stdDeviation="5" result="blur" />
+        <filter id="stroke-glow-soft" x="-60%" y="-60%" width="220%" height="220%">
+          <feGaussianBlur stdDeviation="8" result="blur" />
           <feMerge>
             <feMergeNode in="blur" />
             <feMergeNode in="SourceGraphic" />
           </feMerge>
         </filter>
-        <!-- Gradient for fade-out ends -->
-        <linearGradient id="grad-h" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stop-color="rgba(59,130,246,0)" />
-          <stop offset="15%" stop-color="rgba(59,130,246,1)" />
-          <stop offset="85%" stop-color="rgba(59,130,246,1)" />
-          <stop offset="100%" stop-color="rgba(59,130,246,0)" />
-        </linearGradient>
       </defs>
 
-      <!-- ── Static base wires (dim) ─────────────────── -->
+      <!-- ── Static base strokes (very dim) ── -->
       <path
-        d="M-80,220 C200,160 400,280 720,200 S1040,140 1520,210"
-        fill="none"
-        stroke="rgba(59,130,246,0.18)"
-        stroke-width="1.5"
+        d="M-100,300 C200,220 500,380 800,300 S1100,220 1540,290"
+        fill="none" stroke="rgba(245,158,11,0.10)" stroke-width="60" stroke-linecap="round"
       />
       <path
-        d="M-80,450 C300,390 550,500 860,420 S1180,380 1520,445"
-        fill="none"
-        stroke="rgba(6,182,212,0.14)"
-        stroke-width="1"
+        d="M-100,600 C300,520 600,680 900,600 S1200,520 1540,590"
+        fill="none" stroke="rgba(234,179,8,0.07)" stroke-width="40" stroke-linecap="round"
       />
       <path
-        d="M-80,680 C350,620 650,740 980,660 S1280,620 1520,675"
-        fill="none"
-        stroke="rgba(99,102,241,0.14)"
-        stroke-width="1.5"
-      />
-      <!-- Vertical -->
-      <path
-        d="M280,-40 C260,160 300,380 275,560 S255,740 280,940"
-        fill="none"
-        stroke="rgba(59,130,246,0.12)"
-        stroke-width="1"
+        d="M200,-60 C180,200 220,450 195,680 S175,820 200,940"
+        fill="none" stroke="rgba(245,158,11,0.06)" stroke-width="30" stroke-linecap="round"
       />
       <path
-        d="M1160,-40 C1140,200 1180,420 1155,600 S1135,780 1160,940"
-        fill="none"
-        stroke="rgba(6,182,212,0.10)"
-        stroke-width="1"
+        d="M1200,-60 C1180,180 1220,400 1195,650 S1175,820 1200,940"
+        fill="none" stroke="rgba(234,179,8,0.05)" stroke-width="25" stroke-linecap="round"
       />
 
-      <!-- ── Animated flowing wires ──────────────────── -->
-      <!-- Wire 1 – blue, left-to-right -->
+      <!-- ── Animated brush strokes ── -->
+      <!-- Stroke 1 – wide golden sweep (main hero stroke) -->
       <path
-        class="wire-1"
-        d="M-80,220 C200,160 400,280 720,200 S1040,140 1520,210"
+        class="stroke-anim-1"
+        d="M-100,300 C200,220 500,380 800,300 S1100,220 1540,290"
         fill="none"
-        stroke="#60a5fa"
-        stroke-width="2"
-        stroke-dasharray="30 18"
-        filter="url(#wire-glow)"
-        opacity="0.9"
+        stroke="rgba(245,158,11,0.22)"
+        stroke-width="55"
+        stroke-linecap="round"
+        stroke-dasharray="700 400"
+        filter="url(#stroke-glow-soft)"
       />
-      <!-- Wire 2 – cyan, right-to-left -->
+      <!-- Stroke 2 – thin sharp line over it -->
       <path
-        class="wire-2"
-        d="M-80,450 C300,390 550,500 860,420 S1180,380 1520,445"
+        class="stroke-anim-2"
+        d="M-100,300 C200,220 500,380 800,300 S1100,220 1540,290"
         fill="none"
-        stroke="#22d3ee"
-        stroke-width="1.5"
-        stroke-dasharray="22 14"
-        filter="url(#wire-glow)"
-        opacity="0.8"
-      />
-      <!-- Wire 3 – indigo, left-to-right slow -->
-      <path
-        class="wire-3"
-        d="M-80,680 C350,620 650,740 980,660 S1280,620 1520,675"
-        fill="none"
-        stroke="#818cf8"
-        stroke-width="2"
-        stroke-dasharray="28 20"
-        filter="url(#wire-glow)"
-        opacity="0.7"
-      />
-      <!-- Wire 4 – vertical blue -->
-      <path
-        class="wire-4"
-        d="M280,-40 C260,160 300,380 275,560 S255,740 280,940"
-        fill="none"
-        stroke="#3b82f6"
-        stroke-width="1.5"
-        stroke-dasharray="18 22"
-        filter="url(#wire-glow)"
-        opacity="0.5"
-      />
-      <!-- Wire 5 – vertical cyan -->
-      <path
-        class="wire-5"
-        d="M1160,-40 C1140,200 1180,420 1155,600 S1135,780 1160,940"
-        fill="none"
-        stroke="#06b6d4"
-        stroke-width="1.5"
-        stroke-dasharray="15 25"
-        filter="url(#wire-glow)"
-        opacity="0.45"
+        stroke="rgba(245,158,11,0.55)"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-dasharray="80 40"
+        filter="url(#stroke-glow)"
       />
 
-      <!-- ── Spark dots ───────────────────────────────── -->
-      <circle class="spark-a" cx="280" cy="200"  r="3.5" fill="#93c5fd" filter="url(#spark-glow)" />
-      <circle class="spark-b" cx="720" cy="200"  r="3"   fill="#22d3ee" filter="url(#spark-glow)" />
-      <circle class="spark-c" cx="1160" cy="210" r="3.5" fill="#a5b4fc" filter="url(#spark-glow)" />
-      <circle class="spark-d" cx="550" cy="450"  r="2.5" fill="#67e8f9" filter="url(#spark-glow)" />
-      <circle class="spark-e" cx="980" cy="660"  r="3"   fill="#818cf8" filter="url(#spark-glow)" />
+      <!-- Stroke 3 – second sweep lower -->
+      <path
+        class="stroke-anim-3"
+        d="M-100,600 C300,520 600,680 900,600 S1200,520 1540,590"
+        fill="none"
+        stroke="rgba(234,179,8,0.18)"
+        stroke-width="40"
+        stroke-linecap="round"
+        stroke-dasharray="600 500"
+        filter="url(#stroke-glow-soft)"
+      />
+      <path
+        class="stroke-anim-4"
+        d="M-100,600 C300,520 600,680 900,600 S1200,520 1540,590"
+        fill="none"
+        stroke="rgba(234,179,8,0.45)"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-dasharray="60 50"
+        filter="url(#stroke-glow)"
+      />
+
+      <!-- Stroke 5 – vertical accent left -->
+      <path
+        class="stroke-anim-5"
+        d="M200,-60 C180,200 220,450 195,680 S175,820 200,940"
+        fill="none"
+        stroke="rgba(245,158,11,0.15)"
+        stroke-width="20"
+        stroke-linecap="round"
+        stroke-dasharray="400 600"
+        filter="url(#stroke-glow-soft)"
+      />
+
+      <!-- Stroke 6 – vertical accent right -->
+      <path
+        class="stroke-anim-6"
+        d="M1200,-60 C1180,180 1220,400 1195,650 S1175,820 1200,940"
+        fill="none"
+        stroke="rgba(234,179,8,0.12)"
+        stroke-width="18"
+        stroke-linecap="round"
+        stroke-dasharray="350 650"
+        filter="url(#stroke-glow-soft)"
+      />
+
+      <!-- Highlight dots (paint drops) -->
+      <circle class="drop-1" cx="360"  cy="295" r="5" fill="rgba(245,158,11,0.6)" filter="url(#stroke-glow)" />
+      <circle class="drop-2" cx="800"  cy="300" r="4" fill="rgba(250,204,21,0.7)"  filter="url(#stroke-glow)" />
+      <circle class="drop-3" cx="1150" cy="288" r="5" fill="rgba(245,158,11,0.55)" filter="url(#stroke-glow)" />
+      <circle class="drop-4" cx="580"  cy="598" r="3.5" fill="rgba(234,179,8,0.5)"  filter="url(#stroke-glow)" />
     </svg>
   </div>
 </template>
 
 <style scoped>
-/* ── Wire flow animations ── */
-@keyframes flowRight {
-  from { stroke-dashoffset: 300; }
+@keyframes strokeFlow {
+  from { stroke-dashoffset: 1200; }
   to   { stroke-dashoffset: 0; }
 }
-@keyframes flowLeft {
-  from { stroke-dashoffset: -300; }
+@keyframes strokeFlowReverse {
+  from { stroke-dashoffset: -1200; }
   to   { stroke-dashoffset: 0; }
 }
-@keyframes flowDown {
-  from { stroke-dashoffset: 500; }
+@keyframes strokeFlowVert {
+  from { stroke-dashoffset: 1000; }
   to   { stroke-dashoffset: 0; }
 }
-
-/* ── Spark blink ── */
-@keyframes sparkBlink {
-  0%, 100% { opacity: 0; transform: scale(0.2); }
-  45%, 55%  { opacity: 1; transform: scale(1); }
+@keyframes dropPulse {
+  0%, 100% { opacity: 0; r: 0; }
+  40%, 60%  { opacity: 1; }
 }
 
-.wire-1 { animation: flowRight 3.2s linear infinite; }
-.wire-2 { animation: flowLeft  4.5s linear infinite; animation-delay: -1.5s; }
-.wire-3 { animation: flowRight 6s   linear infinite; animation-delay: -2s; }
-.wire-4 { animation: flowDown  7s   linear infinite; }
-.wire-5 { animation: flowDown  9s   linear infinite; animation-delay: -3s; }
+.stroke-anim-1 { animation: strokeFlow        5s  linear infinite; }
+.stroke-anim-2 { animation: strokeFlow        3.5s linear infinite; animation-delay: -1s; }
+.stroke-anim-3 { animation: strokeFlowReverse 6s  linear infinite; animation-delay: -2s; }
+.stroke-anim-4 { animation: strokeFlowReverse 4.5s linear infinite; animation-delay: -1.5s; }
+.stroke-anim-5 { animation: strokeFlowVert    8s  linear infinite; }
+.stroke-anim-6 { animation: strokeFlowVert    10s linear infinite; animation-delay: -4s; }
 
-.spark-a { animation: sparkBlink 2.4s ease-in-out infinite; }
-.spark-b { animation: sparkBlink 3.0s ease-in-out infinite; animation-delay: -0.8s; }
-.spark-c { animation: sparkBlink 2.8s ease-in-out infinite; animation-delay: -1.4s; }
-.spark-d { animation: sparkBlink 3.5s ease-in-out infinite; animation-delay: -0.5s; }
-.spark-e { animation: sparkBlink 2.6s ease-in-out infinite; animation-delay: -2.1s; }
+.drop-1 { animation: dropPulse 3s ease-in-out infinite; }
+.drop-2 { animation: dropPulse 3.8s ease-in-out infinite; animation-delay: -1.2s; }
+.drop-3 { animation: dropPulse 2.8s ease-in-out infinite; animation-delay: -2s; }
+.drop-4 { animation: dropPulse 4s ease-in-out infinite; animation-delay: -0.7s; }
 </style>
