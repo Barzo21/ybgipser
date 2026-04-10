@@ -1,8 +1,8 @@
 <template>
-  <footer class="bg-slate-950 border-t border-slate-800/40 relative overflow-hidden">
+  <footer class="bg-slate-900 border-t border-slate-800 relative overflow-hidden">
     <!-- Wire decoration -->
-    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent" />
-    <div class="absolute inset-0 pointer-events-none overflow-hidden opacity-20">
+    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
+    <div class="absolute inset-0 pointer-events-none overflow-hidden opacity-15">
       <svg class="w-full h-full" viewBox="0 0 1440 300" preserveAspectRatio="xMidYMid slice">
         <path
           class="footer-wire"
@@ -29,9 +29,7 @@
         <!-- Brand -->
         <div class="md:col-span-2">
           <a href="#" class="inline-flex items-center gap-2.5 mb-5">
-            <div
-              class="w-9 h-9 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-900/30"
-            >
+            <div class="w-9 h-9 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-900/40">
               <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
@@ -40,18 +38,17 @@
               Elektro<span class="text-blue-400">Profi</span>
             </span>
           </a>
-          <p class="text-slate-500 text-sm leading-relaxed max-w-xs mb-6">
+          <p class="text-slate-400 text-sm leading-relaxed max-w-xs mb-6">
             Ihr zertifizierter Elektrofachbetrieb für moderne Lösungen, höchste Qualität
             und persönlichen Service in der Region.
           </p>
-          <!-- Social links -->
           <div class="flex gap-2.5">
             <a
               v-for="social in socials"
               :key="social.label"
               href="#"
               :aria-label="social.label"
-              class="w-9 h-9 bg-slate-800 border border-slate-700/60 rounded-lg flex items-center justify-center text-slate-400 hover:text-blue-400 hover:border-blue-500/50 hover:bg-slate-700/50 transition-all duration-200"
+              class="w-9 h-9 bg-slate-800 border border-slate-700 rounded-lg flex items-center justify-center text-slate-400 hover:text-blue-400 hover:border-blue-500/50 transition-all duration-200"
             >
               <span class="text-xs font-bold">{{ social.abbr }}</span>
             </a>
@@ -63,10 +60,7 @@
           <h4 class="text-white font-semibold text-sm uppercase tracking-wider mb-4">Leistungen</h4>
           <ul class="space-y-2.5">
             <li v-for="link in serviceLinks" :key="link">
-              <a
-                href="#leistungen"
-                class="text-slate-500 hover:text-blue-400 transition-colors text-sm"
-              >
+              <a href="#leistungen" class="text-slate-500 hover:text-blue-400 transition-colors text-sm">
                 {{ link }}
               </a>
             </li>
@@ -94,9 +88,7 @@
       </div>
 
       <!-- Bottom bar -->
-      <div
-        class="pt-8 border-t border-slate-800/50 flex flex-col md:flex-row justify-between items-center gap-4"
-      >
+      <div class="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
         <span class="text-slate-600 text-sm">
           © {{ currentYear }} ElektroProfi. Alle Rechte vorbehalten.
         </span>
@@ -124,14 +116,7 @@ const socials = [
   { label: 'Instagram', abbr: 'ig' },
 ]
 
-const serviceLinks = [
-  'Elektroinstallation',
-  'Wartung & Prüfung',
-  'Smart Home',
-  'Reparaturen',
-  '24h Notdienst',
-]
-
+const serviceLinks = ['Elektroinstallation', 'Wartung & Prüfung', 'Smart Home', 'Reparaturen', '24h Notdienst']
 const legalLinks = ['Impressum', 'Datenschutz', 'AGB']
 </script>
 

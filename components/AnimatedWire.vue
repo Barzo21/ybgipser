@@ -36,32 +36,32 @@
       <path
         d="M-80,220 C200,160 400,280 720,200 S1040,140 1520,210"
         fill="none"
-        stroke="rgba(59,130,246,0.12)"
+        stroke="rgba(59,130,246,0.18)"
         stroke-width="1.5"
       />
       <path
         d="M-80,450 C300,390 550,500 860,420 S1180,380 1520,445"
         fill="none"
-        stroke="rgba(6,182,212,0.08)"
+        stroke="rgba(6,182,212,0.14)"
         stroke-width="1"
       />
       <path
         d="M-80,680 C350,620 650,740 980,660 S1280,620 1520,675"
         fill="none"
-        stroke="rgba(99,102,241,0.1)"
+        stroke="rgba(99,102,241,0.14)"
         stroke-width="1.5"
       />
       <!-- Vertical -->
       <path
         d="M280,-40 C260,160 300,380 275,560 S255,740 280,940"
         fill="none"
-        stroke="rgba(59,130,246,0.08)"
+        stroke="rgba(59,130,246,0.12)"
         stroke-width="1"
       />
       <path
         d="M1160,-40 C1140,200 1180,420 1155,600 S1135,780 1160,940"
         fill="none"
-        stroke="rgba(6,182,212,0.07)"
+        stroke="rgba(6,182,212,0.10)"
         stroke-width="1"
       />
 

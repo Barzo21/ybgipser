@@ -3,22 +3,22 @@
     class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
     :class="
       scrolled
-        ? 'bg-slate-950/90 backdrop-blur-xl border-b border-slate-800/60 shadow-lg shadow-slate-950/50'
-        : 'bg-transparent'
+        ? 'bg-white/95 backdrop-blur-xl border-b border-slate-200 shadow-sm shadow-slate-100'
+        : 'bg-white/80 backdrop-blur-md'
     "
   >
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
       <!-- Logo -->
       <a href="#" class="flex items-center gap-2.5 group">
         <div
-          class="w-8 h-8 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center shadow-lg shadow-blue-900/40 group-hover:shadow-blue-700/60 transition-shadow"
+          class="w-8 h-8 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center shadow-md shadow-blue-200 group-hover:shadow-blue-300 transition-shadow"
         >
           <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
           </svg>
         </div>
-        <span class="text-white font-bold text-lg tracking-tight">
-          Elektro<span class="text-blue-400">Profi</span>
+        <span class="text-slate-900 font-bold text-lg tracking-tight">
+          Elektro<span class="text-blue-500">Profi</span>
         </span>
       </a>
 
@@ -28,28 +28,80 @@
           v-for="link in navLinks"
           :key="link.href"
           :href="link.href"
-          class="text-slate-400 hover:text-white text-sm font-medium transition-colors duration-200 relative group"
+          class="text-slate-500 hover:text-slate-900 text-sm font-medium transition-colors duration-200 relative group"
         >
           {{ link.label }}
           <span
-            class="absolute -bottom-0.5 left-0 w-0 h-px bg-blue-400 transition-all duration-300 group-hover:w-full"
+            class="absolute -bottom-0.5 left-0 w-0 h-px bg-blue-500 transition-all duration-300 group-hover:w-full"
           />
         </a>
       </div>
 
-      <!-- CTA -->
-      <a
-        href="#kontakt"
-        class="px-5 py-2.5 bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-sm font-semibold rounded-xl hover:from-blue-500 hover:to-cyan-500 transition-all duration-300 shadow-lg shadow-blue-900/30 hover:shadow-blue-700/40"
-      >
-        Kontakt
-      </a>
+      <!-- Desktop CTA + Mobile hamburger -->
+      <div class="flex items-center gap-3">
+        <a
+          href="#kontakt"
+          class="hidden md:block px-5 py-2.5 bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-sm font-semibold rounded-xl hover:from-blue-500 hover:to-cyan-500 transition-all duration-300 shadow-md shadow-blue-200 hover:shadow-blue-300"
+        >
+          Kontakt
+        </a>
+
+        <!-- Hamburger button (mobile only) -->
+        <button
+          class="md:hidden relative w-9 h-9 flex flex-col items-center justify-center gap-1.5 rounded-lg hover:bg-slate-100 transition-colors"
+          :aria-label="menuOpen ? 'Menü schließen' : 'Menü öffnen'"
+          @click="menuOpen = !menuOpen"
+        >
+          <span
+            class="block w-5 h-0.5 bg-slate-700 rounded-full transition-all duration-300 origin-center"
+            :class="menuOpen ? 'rotate-45 translate-y-[7px]' : ''"
+          />
+          <span
+            class="block w-5 h-0.5 bg-slate-700 rounded-full transition-all duration-300"
+            :class="menuOpen ? 'opacity-0 scale-x-0' : ''"
+          />
+          <span
+            class="block w-5 h-0.5 bg-slate-700 rounded-full transition-all duration-300 origin-center"
+            :class="menuOpen ? '-rotate-45 -translate-y-[7px]' : ''"
+          />
+        </button>
+      </div>
     </div>
+
+    <!-- Mobile menu -->
+    <Transition name="mobile-menu">
+      <div
+        v-if="menuOpen"
+        class="md:hidden bg-white border-t border-slate-100 shadow-lg"
+      >
+        <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-1">
+          <a
+            v-for="link in navLinks"
+            :key="link.href"
+            :href="link.href"
+            class="px-4 py-3 text-slate-700 font-medium text-sm rounded-xl hover:bg-blue-50 hover:text-blue-600 transition-colors"
+            @click="menuOpen = false"
+          >
+            {{ link.label }}
+          </a>
+          <div class="mt-2 pt-3 border-t border-slate-100">
+            <a
+              href="#kontakt"
+              class="block w-full text-center px-5 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-sm font-semibold rounded-xl hover:from-blue-500 hover:to-cyan-500 transition-all duration-300 shadow-md shadow-blue-200"
+              @click="menuOpen = false"
+            >
+              Kontakt aufnehmen ⚡
+            </a>
+          </div>
+        </div>
+      </div>
+    </Transition>
   </nav>
 </template>
 
 <script setup lang="ts">
 const scrolled = ref(false)
+const menuOpen = ref(false)
 
 const navLinks = [
   { href: '#ueber-uns', label: 'Über uns' },
@@ -66,3 +118,17 @@ onMounted(() => {
   onUnmounted(() => window.removeEventListener('scroll', onScroll))
 })
 </script>
+
+<style scoped>
+.mobile-menu-enter-active {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.mobile-menu-leave-active {
+  transition: all 0.2s ease-in;
+}
+.mobile-menu-enter-from,
+.mobile-menu-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+</style>
