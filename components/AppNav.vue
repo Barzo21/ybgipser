@@ -7,28 +7,14 @@
         : 'bg-white/85 backdrop-blur-md'
     "
   >
-    <div class="max-w-6xl mx-auto px-6 h-[68px] flex items-center justify-between">
+    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
       <!-- Logo -->
-      <a href="#" class="flex items-center gap-3 group">
-        <!-- Logo image in clean white container -->
-        <div class="w-11 h-11 rounded-xl overflow-hidden border border-stone-200 shadow-sm bg-white flex-shrink-0 group-hover:shadow-md transition-shadow">
-          <img
-            :src="logoSrc"
-            alt="Y.B. Gipser GmbH"
-            class="w-full h-full object-cover"
-          />
-        </div>
-        <!-- Divider -->
-        <div class="w-px h-8 bg-stone-200 hidden sm:block" />
-        <!-- Brand text -->
-        <div class="hidden sm:block leading-tight">
-          <div class="text-stone-900 font-bold text-[15px] tracking-tight leading-none">
-            Y.B. Gipser <span class="text-amber-500">GmbH</span>
-          </div>
-          <div class="text-stone-400 text-[10px] font-medium tracking-widest uppercase mt-1 leading-none">
-            Trockenbau · Verputze · Fassaden
-          </div>
-        </div>
+      <a href="#" class="group">
+        <img
+          :src="logoSrc"
+          alt="Y.B. Gipser GmbH"
+          class="h-14 w-auto object-contain logo-blend transition-opacity duration-200 group-hover:opacity-75"
+        />
       </a>
 
       <!-- Desktop links -->
@@ -129,4 +115,9 @@ onMounted(() => {
 .mobile-menu-leave-active { transition: all 0.2s ease-in; }
 .mobile-menu-enter-from,
 .mobile-menu-leave-to    { opacity: 0; transform: translateY(-10px); }
+
+/* Gri logo arka planını beyaz navbar'da yok eder */
+.logo-blend {
+  mix-blend-mode: multiply;
+}
 </style>
