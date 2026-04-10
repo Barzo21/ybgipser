@@ -10,20 +10,11 @@
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
       <!-- Logo -->
       <a href="#" class="flex items-center gap-3 group">
-        <!-- YB monogram badge -->
-        <div
-          class="w-9 h-9 bg-gradient-to-br from-amber-400 to-yellow-500 rounded-xl flex items-center justify-center shadow-md shadow-amber-200/60 group-hover:shadow-amber-300/80 transition-shadow"
-        >
-          <span class="text-white font-extrabold text-sm tracking-tighter leading-none">YB</span>
-        </div>
-        <div class="leading-tight">
-          <div class="text-stone-900 font-bold text-base tracking-tight leading-none">
-            Y.B. Gipser <span class="text-amber-500">GmbH</span>
-          </div>
-          <div class="text-stone-400 text-[10px] font-medium tracking-wider uppercase leading-none mt-0.5">
-            Trockenbau · Verputze · Fassaden
-          </div>
-        </div>
+        <img
+          src="/ybgicserlogo.jpeg"
+          alt="Y.B. Gipser GmbH Logo"
+          class="h-10 w-auto object-contain transition-opacity duration-200 group-hover:opacity-80"
+        />
       </a>
 
       <!-- Desktop links -->
