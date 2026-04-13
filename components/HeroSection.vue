@@ -13,8 +13,17 @@
     <!-- Content -->
     <div class="relative z-10 max-w-5xl mx-auto px-6 text-center pt-20">
 
+      <!-- Logo -->
+      <div class="flex justify-center mb-8 animate-float">
+        <img
+          :src="logoSrc"
+          alt="Y.B. Gipser GmbH"
+          class="h-28 md:h-36 w-auto object-contain drop-shadow-md"
+        />
+      </div>
+
       <!-- Badge -->
-      <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-amber-300/60 bg-amber-50 text-amber-700 text-sm font-medium mb-10 animate-float shadow-sm">
+      <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-amber-300/60 bg-amber-50 text-amber-700 text-sm font-medium mb-10 shadow-sm">
         <span class="w-2 h-2 rounded-full bg-amber-500 animate-subtle-pulse" />
         Meisterbetrieb · Y.B. Gipser GmbH
       </div>
@@ -79,6 +88,8 @@
 </template>
 
 <script setup lang="ts">
+const logoSrc = '/ybgibsertransparanlogo.png'
+
 const stats = [
   { value: '15+', label: 'Jahre Erfahrung' },
   { value: '800+', label: 'Abgeschlossene Projekte' },
