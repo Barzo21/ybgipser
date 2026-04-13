@@ -55,15 +55,19 @@
           <ul class="space-y-3">
             <li class="flex items-start gap-2.5 text-sm text-stone-500">
               <span class="mt-0.5 text-base leading-none">📞</span>
-              <span>+49 (0) 123 456 789</span>
+              <span>079 335 78 75</span>
+            </li>
+            <li class="flex items-start gap-2.5 text-sm text-stone-500">
+              <span class="mt-0.5 text-base leading-none">📞</span>
+              <span>078 950 92 55</span>
             </li>
             <li class="flex items-start gap-2.5 text-sm text-stone-500">
               <span class="mt-0.5 text-base leading-none">📧</span>
-              <span>info@yb-gipser.de</span>
+              <span>info@ybgipser.ch</span>
             </li>
             <li class="flex items-start gap-2.5 text-sm text-stone-500">
               <span class="mt-0.5 text-base leading-none">📍</span>
-              <span>Musterstraße 42<br />12345 Musterstadt</span>
+              <span>4310 Rheinfelden</span>
             </li>
           </ul>
         </div>

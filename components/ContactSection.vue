@@ -37,21 +37,6 @@
             </div>
           </div>
 
-          <!-- Opening hours -->
-          <div class="p-5 bg-white border border-stone-200 rounded-2xl">
-            <h4 class="text-stone-900 font-semibold mb-4 flex items-center gap-2 text-sm">
-              <span class="w-7 h-7 bg-amber-50 rounded-lg flex items-center justify-center text-sm">🕐</span>
-              Arbeitszeiten
-            </h4>
-            <div class="space-y-2 text-sm">
-              <div v-for="row in hours" :key="row.day" class="flex justify-between items-center">
-                <span class="text-stone-500">{{ row.day }}</span>
-                <span :class="row.highlight ? 'text-amber-600 font-semibold' : 'text-stone-700'">
-                  {{ row.time }}
-                </span>
-              </div>
-            </div>
-          </div>
         </div>
 
         <!-- Contact form -->
@@ -121,15 +106,9 @@
 
 <script setup lang="ts">
 const contactInfo = [
-  { icon: '📞', label: 'Telefon', value: '+49 (0) 123 456 789' },
-  { icon: '📧', label: 'E-Mail', value: 'info@yb-gipser.de' },
-  { icon: '📍', label: 'Adresse', value: 'Musterstraße 42, 12345 Musterstadt' },
-]
-
-const hours = [
-  { day: 'Montag – Freitag', time: '07:00 – 17:00 Uhr', highlight: false },
-  { day: 'Samstag', time: '08:00 – 13:00 Uhr', highlight: false },
-  { day: 'Sonntag', time: 'Geschlossen', highlight: false },
-  { day: 'Angebotserstellung', time: 'innerhalb 48h', highlight: true },
+  { icon: '📞', label: 'Yunus Büyüksari', value: '079 335 78 75' },
+  { icon: '📞', label: 'Burhan Koyuncu', value: '078 950 92 55' },
+  { icon: '📧', label: 'E-Mail', value: 'info@ybgipser.ch' },
+  { icon: '📍', label: 'Adresse', value: '4310 Rheinfelden' },
 ]
 </script>
