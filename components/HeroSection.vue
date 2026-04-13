@@ -54,18 +54,6 @@
         </a>
       </div>
 
-      <!-- Stats bar -->
-      <div class="inline-flex flex-wrap justify-center gap-0 border border-stone-200 bg-white rounded-2xl overflow-hidden shadow-sm">
-        <div
-          v-for="(stat, i) in stats"
-          :key="stat.label"
-          class="flex flex-col items-center px-7 py-5"
-          :class="i < stats.length - 1 ? 'border-r border-stone-200' : ''"
-        >
-          <span class="text-2xl font-bold text-stone-900">{{ stat.value }}</span>
-          <span class="text-xs text-stone-400 mt-0.5 whitespace-nowrap">{{ stat.label }}</span>
-        </div>
-      </div>
     </div>
 
     <!-- Scroll indicator -->
@@ -79,10 +67,4 @@
 </template>
 
 <script setup lang="ts">
-const stats = [
-  { value: '15+', label: 'Jahre Erfahrung' },
-  { value: '800+', label: 'Abgeschlossene Projekte' },
-  { value: '98%', label: 'Weiterempfehlung' },
-  { value: '5★', label: 'Kundenbewertung' },
-]
 </script>
