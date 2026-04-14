@@ -19,21 +19,35 @@
         </p>
       </div>
 
+      <!-- Before / After showcase -->
+      <div class="mb-16 reveal">
+        <div class="flex items-center gap-3 mb-5">
+          <span class="w-8 h-0.5 bg-amber-400 rounded-full" />
+          <span class="text-amber-600 text-sm font-semibold uppercase tracking-widest">Vorher · Nachher</span>
+        </div>
+        <div class="rounded-3xl overflow-hidden shadow-2xl shadow-stone-200 ring-1 ring-stone-100">
+          <BeforeAfterSlider
+            before="/projekte/10.jpeg"
+            after="/projekte/1.jpeg"
+          />
+        </div>
+        <p class="mt-4 text-stone-400 text-sm text-center">
+          Schieber ziehen um Vorher &amp; Nachher zu vergleichen
+        </p>
+      </div>
+
       <!-- Gallery grid -->
       <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
         <div
           v-for="(item, index) in projects"
           :key="index"
           class="reveal group relative overflow-hidden rounded-2xl cursor-pointer"
-          :class="item.large ? 'row-span-2' : ''"
-          :style="{ transitionDelay: `${index * 60}ms`, aspectRatio: item.large ? 'unset' : '4/3' }"
+          :style="{ transitionDelay: `${index * 60}ms`, aspectRatio: '4/3' }"
         >
-          <!-- Image -->
           <img
             :src="item.src"
             :alt="item.title"
             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            :style="item.large ? 'height: 100%; min-height: 320px;' : ''"
             loading="lazy"
           />
 
@@ -53,7 +67,7 @@
             <h3 class="text-white font-bold text-lg leading-tight">{{ item.title }}</h3>
           </div>
 
-          <!-- Amber corner accent on hover -->
+          <!-- Amber corner accent -->
           <div
             class="absolute top-4 right-4 w-8 h-8 rounded-full bg-amber-400/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 scale-0 group-hover:scale-100"
           >
@@ -82,44 +96,14 @@
 </template>
 
 <script setup lang="ts">
-// Kendi proje fotoğraflarını public/projekte/ klasörüne ekleyip
-// src değerlerini '/projekte/foto1.jpg' gibi güncelleyebilirsiniz.
 const projects = [
-  {
-    src: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80',
-    title: 'Innenputz Einfamilienhaus',
-    category: 'Verputze',
-    large: true,
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
-    title: 'Trockenbau Bürokomplex',
-    category: 'Trockenbau',
-    large: false,
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1541123437800-1bb1317badc2?w=800&q=80',
-    title: 'Fassadensanierung',
-    category: 'Fassaden',
-    large: false,
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80',
-    title: 'Außenputz Mehrfamilienhaus',
-    category: 'Fassaden',
-    large: false,
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=800&q=80',
-    title: 'Deckenverkleidung Modern',
-    category: 'Trockenbau',
-    large: false,
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
-    title: 'Glattputz Wohnbereich',
-    category: 'Verputze',
-    large: false,
-  },
+  { src: '/projekte/2.jpeg', title: 'Innenputz Einfamilienhaus',    category: 'Verputze'  },
+  { src: '/projekte/3.jpeg', title: 'Trockenbau Bürokomplex',       category: 'Trockenbau' },
+  { src: '/projekte/4.jpeg', title: 'Fassadensanierung',            category: 'Fassaden'  },
+  { src: '/projekte/5.jpeg', title: 'Außenputz Mehrfamilienhaus',   category: 'Fassaden'  },
+  { src: '/projekte/6.jpeg', title: 'Deckenverkleidung Modern',     category: 'Trockenbau' },
+  { src: '/projekte/7.jpeg', title: 'Glattputz Wohnbereich',        category: 'Verputze'  },
+  { src: '/projekte/8.jpeg', title: 'Renovierung Altbau',           category: 'Renovierung'},
+  { src: '/projekte/9.jpeg', title: 'Außenfassade Neubau',          category: 'Fassaden'  },
 ]
 </script>
