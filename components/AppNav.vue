@@ -97,7 +97,7 @@ const menuOpen = ref(false)
 const logoSrc = '/ybgibsertransparanlogo.png'
 
 const navLinks = [
-  { href: '#ueber-uns', label: 'Über uns' },
+  { href: '#projekte', label: 'Projekte' },
   { href: '#leistungen', label: 'Leistungen' },
   { href: '#warum-wir', label: 'Warum wir?' },
   { href: '#kontakt', label: 'Kontakt' },

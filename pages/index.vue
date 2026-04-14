@@ -3,7 +3,7 @@
     <AppNav />
     <main>
       <HeroSection />
-      <AboutSection />
+      <GallerySection />
       <ServicesSection />
       <FeaturesSection />
       <ContactSection />
