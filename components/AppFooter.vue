@@ -22,7 +22,7 @@
             <img
               :src="logoSrc"
               alt="Y.B. Gipser GmbH"
-              class="h-14 w-auto object-contain opacity-90 group-hover:opacity-70 transition-opacity"
+              class="h-16 w-auto object-contain brightness-0 invert opacity-90 group-hover:opacity-70 transition-opacity"
             />
           </a>
           <p class="text-stone-400 text-sm leading-relaxed max-w-xs mb-6">
@@ -91,7 +91,7 @@
 
 <script setup lang="ts">
 const currentYear = new Date().getFullYear()
-const logoSrc = '/ybgibsertransparanlogo.png'
+const logoSrc = '/1.png'
 const socials = [
   { label: 'Facebook', abbr: 'f' },
   { label: 'Instagram', abbr: 'ig' },

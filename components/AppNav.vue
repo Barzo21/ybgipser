@@ -13,7 +13,7 @@
         <img
           :src="logoSrc"
           alt="Y.B. Gipser GmbH"
-          class="h-14 w-auto object-contain transition-opacity duration-200 group-hover:opacity-75"
+          class="h-16 w-auto object-contain transition-opacity duration-200 group-hover:opacity-75"
         />
       </a>
 
@@ -94,7 +94,7 @@
 <script setup lang="ts">
 const scrolled = ref(false)
 const menuOpen = ref(false)
-const logoSrc = '/ybgibsertransparanlogo.png'
+const logoSrc = '/1.png'
 
 const navLinks = [
   { href: '#projekte', label: 'Projekte' },
