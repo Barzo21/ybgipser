@@ -10,14 +10,22 @@ if (existsSync(envPath)) {
   process.exit(0)
 }
 
-const jwtSecret   = randomBytes(48).toString('base64url')
-const adminPass   = randomBytes(16).toString('base64url')
-const adminUser   = 'admin'
+const jwtSecret  = randomBytes(48).toString('base64url')
+const adminPass  = randomBytes(16).toString('base64url')
+const adminUser  = 'admin'
+// TOTP secret: Base32 uyumlu (A-Z, 2-7) — 20 byte = 32 base32 karakter
+const totpSecret = randomBytes(20).toString('hex').toUpperCase()
+  .replace(/[89ABCDEF]/g, c => String.fromCharCode(65 + parseInt(c, 16) % 8))
+  .slice(0, 32)
 
 const content = `# Admin Panel
 ADMIN_USERNAME=${adminUser}
 ADMIN_PASSWORD=${adminPass}
 JWT_SECRET=${jwtSecret}
+
+# 2FA - Google Authenticator / Authy
+# QR kurmak icin: /admin/setup sayfasini ziyaret et
+TOTP_SECRET=${totpSecret}
 
 # Storage (Vercel icin STORAGE_PATH=/tmp/messages yap)
 STORAGE_PATH=./.data/messages
@@ -28,5 +36,7 @@ writeFileSync(envPath, content, 'utf-8')
 console.log('✅ .env oluşturuldu!\n')
 console.log(`   Kullanıcı adı : ${adminUser}`)
 console.log(`   Şifre         : ${adminPass}`)
+console.log(`   TOTP Secret   : ${totpSecret}`)
 console.log(`   JWT Secret    : ${jwtSecret}\n`)
-console.log('⚠️  Bu şifreyi bir yere not et – .env dosyası git\'e commit edilmez.')
+console.log('📱 2FA kurmak için önce siteyi başlat, sonra /admin/setup adresine git.')
+console.log('⚠️  Bu bilgileri bir yere not et – .env dosyası git\'e commit edilmez.')

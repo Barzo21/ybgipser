@@ -27,6 +27,22 @@
             class="w-full px-4 py-3 bg-stone-800 border border-stone-700 rounded-xl text-white text-sm focus:outline-none focus:border-amber-500 transition-colors"
           />
         </div>
+        <div>
+          <label class="block text-stone-400 text-xs uppercase tracking-wider mb-2">
+            Authenticator-Code
+            <span class="text-stone-600 normal-case tracking-normal ml-1">(Google Authenticator / Authy)</span>
+          </label>
+          <input
+            v-model="creds.totpCode"
+            type="text"
+            inputmode="numeric"
+            pattern="[0-9]{6}"
+            maxlength="6"
+            placeholder="000000"
+            autocomplete="one-time-code"
+            class="w-full px-4 py-3 bg-stone-800 border border-stone-700 rounded-xl text-white text-sm focus:outline-none focus:border-amber-500 transition-colors text-center tracking-[0.4em] font-mono text-lg"
+          />
+        </div>
 
         <p v-if="loginError" class="text-red-400 text-sm text-center">{{ loginError }}</p>
 
@@ -37,6 +53,10 @@
         >
           {{ loading ? 'Laden...' : 'Anmelden' }}
         </button>
+
+        <a href="/admin/setup" class="block text-center text-stone-600 hover:text-stone-400 text-xs transition-colors">
+          2FA noch nicht eingerichtet? →
+        </a>
       </form>
     </div>
   </div>
@@ -142,7 +162,7 @@ const loading = ref(false)
 const loginError = ref('')
 const messages = ref<Message[]>([])
 
-const creds = reactive({ username: '', password: '' })
+const creds = reactive({ username: '', password: '', totpCode: '' })
 
 onMounted(() => {
   token.value = localStorage.getItem('admin_token')
