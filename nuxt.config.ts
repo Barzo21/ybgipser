@@ -13,11 +13,15 @@ export default defineNuxtConfig({
         driver: 'fs',
         base: process.env.STORAGE_PATH || './.data/messages',
       },
+      projects: {
+        driver: 'fs',
+        base: process.env.PROJECTS_STORAGE_PATH || './.data/projects',
+      },
     },
   },
   app: {
     head: {
-      title: 'Y.B. Gipser GmbH – Trockenbau · Verputze · Fassaden',
+      title: 'YBGIBSER',
       htmlAttrs: { lang: 'de' },
       meta: [
         { charset: 'utf-8' },
@@ -30,6 +34,7 @@ export default defineNuxtConfig({
         { name: 'theme-color', content: '#ffffff' },
       ],
       link: [
+        { rel: 'icon', type: 'image/png', href: '/1.png' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         {

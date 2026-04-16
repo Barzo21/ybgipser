@@ -153,16 +153,8 @@
 </template>
 
 <script setup lang="ts">
-const projects = [
-  { src: '/projekte/2.jpeg',  title: 'Innenputz Einfamilienhaus',  category: 'Verputze'   },
-  { src: '/projekte/3.jpeg',  title: 'Trockenbau Bürokomplex',     category: 'Trockenbau' },
-  { src: '/projekte/4.jpeg',  title: 'Fassadensanierung',          category: 'Fassaden'   },
-  { src: '/projekte/5.jpeg',  title: 'Außenputz Mehrfamilienhaus', category: 'Fassaden'   },
-  { src: '/projekte/6.jpeg',  title: 'Deckenverkleidung Modern',   category: 'Trockenbau' },
-  { src: '/projekte/7.jpeg',  title: 'Glattputz Wohnbereich',      category: 'Verputze'   },
-  { src: '/projekte/8.jpeg',  title: 'Renovierung Altbau',         category: 'Renovierung'},
-  { src: '/projekte/9.jpeg',  title: 'Außenfassade Neubau',        category: 'Fassaden'   },
-]
+const { data: fetchProjects } = await useFetch<any[]>('/api/projects')
+const projects = computed(() => fetchProjects.value || [])
 
 const lightboxIndex = ref<number | null>(null)
 

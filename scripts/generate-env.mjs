@@ -13,9 +13,19 @@ if (existsSync(envPath)) {
 const jwtSecret  = randomBytes(48).toString('base64url')
 const adminPass  = randomBytes(16).toString('base64url')
 const adminUser  = 'admin'
-// TOTP secret: Base32 alfabe (A-Z + 2-7), 20 byte = 32 karakter
-const BASE32 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567'
-const totpSecret = Array.from(randomBytes(20)).map(b => BASE32[b % 32]).join('')
+// TOTP secret: 20 byte → gerçek Base32 encode → 32 karakter
+function toBase32(bytes) {
+  const ALPHA = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567'
+  let result = '', bits = 0, value = 0
+  for (const byte of bytes) {
+    value = (value << 8) | byte
+    bits += 8
+    while (bits >= 5) { result += ALPHA[(value >>> (bits - 5)) & 31]; bits -= 5 }
+  }
+  if (bits > 0) result += ALPHA[(value << (5 - bits)) & 31]
+  return result
+}
+const totpSecret = toBase32(randomBytes(20)) // 32 karakter, Google Authenticator uyumlu
 
 const content = `# Admin Panel
 ADMIN_USERNAME=${adminUser}
