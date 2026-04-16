@@ -11,9 +11,14 @@
   },
   "dependencies": {
     "@nuxt/ui": "^2.18.0",
+    "jose": "^6.2.2",
+    "nodemailer": "^8.0.5",
     "nuxt": "^3.15.0"
   },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@types/nodemailer": "^8.0.0"
   }
 }

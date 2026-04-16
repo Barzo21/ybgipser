@@ -107,9 +107,20 @@
                   class="w-full px-4 py-3 bg-stone-50 border border-stone-200 text-stone-900 rounded-xl focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-300 transition-all placeholder-stone-300 resize-none text-sm" />
               </div>
 
-              <button type="submit"
-                class="w-full py-4 bg-gradient-to-r from-amber-500 to-yellow-400 text-white font-semibold rounded-xl hover:from-amber-400 hover:to-yellow-300 transition-all duration-300 animate-glow-pulse text-base shadow-lg shadow-amber-200">
-                Kostenloses Angebot anfordern →
+              <!-- Success -->
+              <div v-if="submitStatus === 'success'" class="w-full py-4 bg-green-50 border border-green-200 rounded-xl text-green-700 font-medium text-sm text-center">
+                ✓ Anfrage gesendet – wir melden uns bald!
+              </div>
+
+              <!-- Error -->
+              <div v-else-if="submitStatus === 'error'" class="w-full py-4 bg-red-50 border border-red-200 rounded-xl text-red-600 font-medium text-sm text-center">
+                Fehler beim Senden. Bitte versuchen Sie es erneut.
+              </div>
+
+              <!-- Submit button -->
+              <button v-else type="submit" :disabled="submitStatus === 'loading'"
+                class="w-full py-4 bg-gradient-to-r from-amber-500 to-yellow-400 text-white font-semibold rounded-xl hover:from-amber-400 hover:to-yellow-300 transition-all duration-300 text-base shadow-lg shadow-amber-200 disabled:opacity-60 disabled:cursor-not-allowed">
+                {{ submitStatus === 'loading' ? 'Wird gesendet...' : 'Kostenloses Angebot anfordern →' }}
               </button>
 
               <p class="text-xs text-stone-400 text-center">
@@ -153,19 +164,20 @@ function waLink(message = 'Guten Tag, ich möchte ein kostenloses Angebot anfrag
   return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`
 }
 
-function sendViaMail() {
-  const subject = encodeURIComponent('Angebotsanfrage – Y.B. Gipser GmbH')
-  const lines: string[] = ['Angebotsanfrage', '']
-  if (form.vorname || form.nachname)
-    lines.push(`Name: ${[form.vorname, form.nachname].filter(Boolean).join(' ')}`)
-  if (form.kontakt)
-    lines.push(`Kontakt: ${form.kontakt}`)
-  if (form.leistung)
-    lines.push(`Leistung: ${form.leistung}`)
-  if (form.beschreibung)
-    lines.push(``, `Beschreibung:`, form.beschreibung)
-  const body = encodeURIComponent(lines.join('\n'))
-  window.location.href = `mailto:info@ybgipser.ch?subject=${subject}&body=${body}`
+const submitStatus = ref<'idle' | 'loading' | 'success' | 'error'>('idle')
+
+async function sendViaMail() {
+  submitStatus.value = 'loading'
+  try {
+    await $fetch('/api/contact', {
+      method: 'POST',
+      body: { ...form },
+    })
+    submitStatus.value = 'success'
+    Object.assign(form, { vorname: '', nachname: '', kontakt: '', leistung: '', beschreibung: '' })
+  } catch {
+    submitStatus.value = 'error'
+  }
 }
 
 const contactInfo = [

@@ -7,6 +7,14 @@ export default defineNuxtConfig({
     fallback: 'light',
   },
   css: ['~/assets/css/main.css'],
+  nitro: {
+    storage: {
+      messages: {
+        driver: 'fs',
+        base: process.env.STORAGE_PATH || './.data/messages',
+      },
+    },
+  },
   app: {
     head: {
       title: 'Y.B. Gipser GmbH – Trockenbau · Verputze · Fassaden',
