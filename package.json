@@ -8,7 +8,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "setup:env": "node scripts/generate-env.mjs"
+    "setup:env": "node scripts/generate-env.mjs",
+    "setup:2fa": "node scripts/setup-2fa.mjs"
   },
   "dependencies": {
     "@nuxt/ui": "^2.18.0",
