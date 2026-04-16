@@ -73,10 +73,18 @@
           © {{ currentYear }} Y.B. Gipser GmbH. Alle Rechte vorbehalten.
         </span>
         <div class="flex items-center gap-6">
-          <a v-for="legal in legalLinks" :key="legal" href="#"
+          <NuxtLink to="/impressum"
             class="text-stone-600 hover:text-stone-400 transition-colors text-sm">
-            {{ legal }}
-          </a>
+            Impressum
+          </NuxtLink>
+          <NuxtLink to="/datenschutz"
+            class="text-stone-600 hover:text-stone-400 transition-colors text-sm">
+            Datenschutz
+          </NuxtLink>
+          <NuxtLink to="/agb"
+            class="text-stone-600 hover:text-stone-400 transition-colors text-sm">
+            AGB
+          </NuxtLink>
         </div>
       </div>
     </div>
@@ -87,7 +95,6 @@
 const currentYear = new Date().getFullYear()
 const logoSrc = '/1.png'
 const serviceLinks = ['Trockenbau', 'Innenputz / Verputze', 'Fassaden', 'Renovierung', 'Kostenlose Beratung']
-const legalLinks = ['Impressum', 'Datenschutz', 'AGB']
 </script>
 
 <style scoped>

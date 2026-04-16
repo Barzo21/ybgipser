@@ -170,12 +170,12 @@ function closeLightbox() {
 
 function prevImage() {
   if (lightboxIndex.value === null) return
-  lightboxIndex.value = (lightboxIndex.value - 1 + projects.length) % projects.length
+  lightboxIndex.value = (lightboxIndex.value - 1 + projects.value.length) % projects.value.length
 }
 
 function nextImage() {
   if (lightboxIndex.value === null) return
-  lightboxIndex.value = (lightboxIndex.value + 1) % projects.length
+  lightboxIndex.value = (lightboxIndex.value + 1) % projects.value.length
 }
 
 onMounted(() => {

@@ -9,37 +9,37 @@
   >
     <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
       <!-- Logo -->
-      <a href="#" class="group">
+      <NuxtLink to="/" class="group">
         <img
           :src="logoSrc"
           alt="Y.B. Gipser GmbH"
           class="h-16 w-auto object-contain transition-opacity duration-200 group-hover:opacity-75"
         />
-      </a>
+      </NuxtLink>
 
       <!-- Desktop links -->
       <div class="hidden md:flex items-center gap-8">
-        <a
+        <NuxtLink
           v-for="link in navLinks"
           :key="link.href"
-          :href="link.href"
+          :to="link.href"
           class="text-stone-500 hover:text-stone-900 text-sm font-medium transition-colors duration-200 relative group"
         >
           {{ link.label }}
           <span
             class="absolute -bottom-0.5 left-0 w-0 h-px bg-amber-500 transition-all duration-300 group-hover:w-full"
           />
-        </a>
+        </NuxtLink>
       </div>
 
       <!-- Desktop CTA + Mobile hamburger -->
       <div class="flex items-center gap-3">
-        <a
-          href="#kontakt"
+        <NuxtLink
+          to="/#kontakt"
           class="hidden md:block px-5 py-2.5 bg-gradient-to-r from-amber-500 to-yellow-400 text-white text-sm font-semibold rounded-xl hover:from-amber-400 hover:to-yellow-300 transition-all duration-300 shadow-md shadow-amber-200 hover:shadow-amber-300"
         >
           Angebot anfragen
-        </a>
+        </NuxtLink>
 
         <!-- Hamburger -->
         <button
@@ -67,23 +67,23 @@
     <Transition name="mobile-menu">
       <div v-if="menuOpen" class="md:hidden bg-white border-t border-stone-100 shadow-lg">
         <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-1">
-          <a
+          <NuxtLink
             v-for="link in navLinks"
             :key="link.href"
-            :href="link.href"
+            :to="link.href"
             class="px-4 py-3 text-stone-700 font-medium text-sm rounded-xl hover:bg-amber-50 hover:text-amber-700 transition-colors"
             @click="menuOpen = false"
           >
             {{ link.label }}
-          </a>
+          </NuxtLink>
           <div class="mt-2 pt-3 border-t border-stone-100">
-            <a
-              href="#kontakt"
+            <NuxtLink
+              to="/#kontakt"
               class="block w-full text-center px-5 py-3 bg-gradient-to-r from-amber-500 to-yellow-400 text-white text-sm font-semibold rounded-xl hover:from-amber-400 hover:to-yellow-300 transition-all duration-300 shadow-md shadow-amber-200"
               @click="menuOpen = false"
             >
               Kostenloses Angebot anfordern
-            </a>
+            </NuxtLink>
           </div>
         </div>
       </div>
@@ -97,10 +97,10 @@ const menuOpen = ref(false)
 const logoSrc = '/1.png'
 
 const navLinks = [
-  { href: '#projekte', label: 'Projekte' },
-  { href: '#leistungen', label: 'Leistungen' },
-  { href: '#warum-wir', label: 'Warum wir?' },
-  { href: '#kontakt', label: 'Kontakt' },
+  { href: '/#projekte', label: 'Projekte' },
+  { href: '/#leistungen', label: 'Leistungen' },
+  { href: '/#warum-wir', label: 'Warum wir?' },
+  { href: '/#kontakt', label: 'Kontakt' },
 ]
 
 onMounted(() => {

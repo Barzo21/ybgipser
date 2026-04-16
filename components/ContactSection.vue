@@ -107,6 +107,43 @@
                   class="w-full px-4 py-3 bg-stone-50 border border-stone-200 text-stone-900 rounded-xl focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-300 transition-all placeholder-stone-300 resize-none text-sm" />
               </div>
 
+              <!-- Consent Checkboxes -->
+              <div class="space-y-3 bg-amber-50 p-4 rounded-xl border border-amber-200">
+                <div class="flex items-start gap-3">
+                  <input 
+                    id="consent-privacy" 
+                    v-model="form.consentPrivacy" 
+                    type="checkbox" 
+                    class="mt-1 rounded border-stone-300 text-amber-600 focus:ring-amber-500" 
+                  />
+                  <label for="consent-privacy" class="text-xs text-stone-700 leading-relaxed">
+                    Ich akzeptiere die 
+                    <NuxtLink to="/datenschutz" class="text-amber-700 hover:text-amber-800 font-semibold underline" target="_blank">
+                      Datenschutzerklärung
+                    </NuxtLink>
+                    und erlaube die Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage gemäß nFDPA.
+                  </label>
+                </div>
+                <div class="flex items-start gap-3">
+                  <input 
+                    id="consent-contact" 
+                    v-model="form.consentContact" 
+                    type="checkbox" 
+                    class="mt-1 rounded border-stone-300 text-amber-600 focus:ring-amber-500" 
+                  />
+                  <label for="consent-contact" class="text-xs text-stone-700 leading-relaxed">
+                    Ich bin damit einverstanden, dass Sie mich telefonisch oder per E-Mail kontaktieren, um meine Anfrage zu bearbeiten.
+                  </label>
+                </div>
+              </div>
+
+              <!-- Errors -->
+              <div v-if="formErrors.length > 0" class="w-full py-3 px-4 bg-red-50 border border-red-200 rounded-xl">
+                <p v-for="(error, idx) in formErrors" :key="idx" class="text-red-600 font-medium text-sm">
+                  • {{ error }}
+                </p>
+              </div>
+
               <!-- Success -->
               <div v-if="submitStatus === 'success'" class="w-full py-4 bg-green-50 border border-green-200 rounded-xl text-green-700 font-medium text-sm text-center">
                 ✓ Anfrage gesendet – wir melden uns bald!
@@ -118,14 +155,17 @@
               </div>
 
               <!-- Submit button -->
-              <button v-else type="submit" :disabled="submitStatus === 'loading'"
+              <button v-else type="submit" :disabled="submitStatus === 'loading' || !isFormValid()"
                 class="w-full py-4 bg-gradient-to-r from-amber-500 to-yellow-400 text-white font-semibold rounded-xl hover:from-amber-400 hover:to-yellow-300 transition-all duration-300 text-base shadow-lg shadow-amber-200 disabled:opacity-60 disabled:cursor-not-allowed">
                 {{ submitStatus === 'loading' ? 'Wird gesendet...' : 'Kostenloses Angebot anfordern →' }}
               </button>
 
-              <p class="text-xs text-stone-400 text-center">
-                Mit dem Absenden stimmen Sie unserer
-                <a href="#" class="text-stone-500 hover:text-amber-600 transition-colors underline">Datenschutzerklärung</a> zu.
+              <p class="text-xs text-stone-500 text-center leading-relaxed">
+                Ihre Daten werden gemäß unserer 
+                <NuxtLink to="/datenschutz" class="text-amber-600 hover:text-amber-700 font-semibold underline">
+                  Datenschutzerklärung
+                </NuxtLink>
+                geschützt und nicht an Dritte weitergegeben.
               </p>
             </form>
           </div>
@@ -158,7 +198,11 @@ const form = reactive({
   kontakt: '',
   leistung: '',
   beschreibung: '',
+  consentPrivacy: false,
+  consentContact: false,
 })
+
+const formErrors = ref<string[]>([])
 
 function waLink(message = 'Guten Tag, ich möchte ein kostenloses Angebot anfragen.') {
   return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`
@@ -166,19 +210,94 @@ function waLink(message = 'Guten Tag, ich möchte ein kostenloses Angebot anfrag
 
 const submitStatus = ref<'idle' | 'loading' | 'success' | 'error'>('idle')
 
+function validateForm(): boolean {
+  formErrors.value = []
+
+  if (!form.vorname?.trim()) {
+    formErrors.value.push('Vorname ist erforderlich')
+  }
+  if (!form.nachname?.trim()) {
+    formErrors.value.push('Nachname ist erforderlich')
+  }
+  if (!form.kontakt?.trim()) {
+    formErrors.value.push('Telefon oder E-Mail ist erforderlich')
+  } else if (!isValidContact(form.kontakt)) {
+    formErrors.value.push('Bitte geben Sie eine gültige Telefonnummer oder E-Mail-Adresse an')
+  }
+  if (!form.leistung) {
+    formErrors.value.push('Bitte wählen Sie eine Leistung')
+  }
+  if (!form.beschreibung?.trim()) {
+    formErrors.value.push('Projektbeschreibung ist erforderlich')
+  }
+  if (!form.consentPrivacy) {
+    formErrors.value.push('Datenschutzerklärung muss akzeptiert werden')
+  }
+  if (!form.consentContact) {
+    formErrors.value.push('Kontaktzustimmung ist erforderlich')
+  }
+
+  return formErrors.value.length === 0
+}
+
+function isValidContact(contact: string): boolean {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  const phoneRegex = /^[\d\s+\-().]+$/
+  return emailRegex.test(contact) || (phoneRegex.test(contact) && contact.length >= 9)
+}
+
+function isFormValid(): boolean {
+  return (
+    form.vorname?.trim().length > 0 &&
+    form.nachname?.trim().length > 0 &&
+    form.kontakt?.trim().length > 0 &&
+    form.leistung &&
+    form.beschreibung?.trim().length > 0 &&
+    form.consentPrivacy &&
+    form.consentContact
+  )
+}
+
 async function sendViaMail() {
+  if (!validateForm()) {
+    return
+  }
+
   submitStatus.value = 'loading'
   try {
     await $fetch('/api/contact', {
       method: 'POST',
-      body: { ...form },
+      body: {
+        vorname: form.vorname.trim(),
+        nachname: form.nachname.trim(),
+        kontakt: form.kontakt.trim(),
+        leistung: form.leistung,
+        beschreibung: form.beschreibung.trim(),
+        consentPrivacy: form.consentPrivacy,
+        consentContact: form.consentContact,
+      },
     })
     submitStatus.value = 'success'
-    Object.assign(form, { vorname: '', nachname: '', kontakt: '', leistung: '', beschreibung: '' })
-  } catch {
+    Object.assign(form, {
+      vorname: '',
+      nachname: '',
+      kontakt: '',
+      leistung: '',
+      beschreibung: '',
+      consentPrivacy: false,
+      consentContact: false,
+    })
+    // Reset status after 5 seconds
+    setTimeout(() => {
+      submitStatus.value = 'idle'
+    }, 5000)
+  } catch (error) {
     submitStatus.value = 'error'
+    formErrors.value = ['Fehler beim Senden der Anfrage. Bitte versuchen Sie es später erneut.']
+    Object.assign(form, { vorname: '', nachname: '', kontakt: '', leistung: '', beschreibung: '' })
   }
 }
+
 
 const contactInfo = [
   { icon: '📞', label: 'Yunus Büyüksari', value: '079 335 78 75' },

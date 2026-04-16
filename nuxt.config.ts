@@ -19,9 +19,20 @@ export default defineNuxtConfig({
       },
     },
   },
+  routeRules: {
+    '/**': {
+      headers: {
+        'X-Content-Type-Options': 'nosniff',
+        'X-Frame-Options': 'SAMEORIGIN',
+        'X-XSS-Protection': '1; mode=block',
+        'Referrer-Policy': 'strict-origin-when-cross-origin',
+        'Permissions-Policy': 'geolocation=(), microphone=(), camera=()',
+      },
+    },
+  },
   app: {
     head: {
-      title: 'YBGIBSER',
+      title: 'ybgipser',
       htmlAttrs: { lang: 'de' },
       meta: [
         { charset: 'utf-8' },
@@ -32,6 +43,8 @@ export default defineNuxtConfig({
             'Y.B. Gipser GmbH – Ihr Spezialist für Trockenbau, Innenputz, Außenputz und Fassadengestaltung. Meisterbetrieb mit höchster Qualität und Präzision.',
         },
         { name: 'theme-color', content: '#ffffff' },
+        // GDPR/nFDPA compliance meta
+        { name: 'robots', content: 'index, follow' },
       ],
       link: [
         { rel: 'icon', type: 'image/png', href: '/1.png' },
@@ -44,5 +57,9 @@ export default defineNuxtConfig({
       ],
     },
     pageTransition: { name: 'page', mode: 'out-in' },
+  },
+  // Nuxt UI config
+  ui: {
+    global: true,
   },
 })
