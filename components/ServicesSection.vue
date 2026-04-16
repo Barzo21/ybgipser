@@ -50,16 +50,9 @@
           <h3 class="text-stone-900 font-semibold text-lg mb-2.5 group-hover:text-amber-700 transition-colors">
             {{ service.title }}
           </h3>
-          <p class="text-stone-500 text-sm leading-relaxed mb-4">
+          <p class="text-stone-500 text-sm leading-relaxed">
             {{ service.description }}
           </p>
-
-          <div class="flex items-center gap-1.5 text-amber-600 text-sm font-medium opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-            Mehr erfahren
-            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </div>
         </div>
       </div>
 
