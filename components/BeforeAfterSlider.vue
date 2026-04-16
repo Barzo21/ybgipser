@@ -10,7 +10,7 @@
 
     <!-- AFTER image (top layer, clipped) -->
     <div
-      class="absolute inset-0 overflow-hidden"
+      class="absolute inset-0 overflow-hidden clip-layer"
       :style="{ clipPath: `inset(0 ${100 - sliderPos}% 0 0)` }"
     >
       <img
@@ -53,7 +53,7 @@
       </span>
     </div>
 
-    <!-- Drag hint (fades after first interaction) -->
+    <!-- Drag hint -->
     <Transition name="hint-fade">
       <div v-if="showHint" class="absolute inset-0 flex items-center justify-center z-30 pointer-events-none">
         <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-black/50 text-white text-xs font-medium backdrop-blur-sm animate-pulse">
@@ -84,7 +84,6 @@ function onMove(clientX: number) {
   sliderPos.value = getPos(clientX)
 }
 
-// Mouse
 function startDrag() {
   showHint.value = false
   const move = (e: MouseEvent) => onMove(e.clientX)
@@ -96,11 +95,9 @@ function startDrag() {
   window.addEventListener('mouseup', up)
 }
 
-// Touch
 function startTouch(e: TouchEvent) {
   showHint.value = false
-  const t = e.touches[0]
-  onMove(t.clientX)
+  onMove(e.touches[0].clientX)
   const move = (ev: TouchEvent) => onMove(ev.touches[0].clientX)
   const end = () => {
     window.removeEventListener('touchmove', move)
@@ -112,6 +109,10 @@ function startTouch(e: TouchEvent) {
 </script>
 
 <style scoped>
+.clip-layer {
+  will-change: clip-path;
+}
+
 .hint-fade-leave-active { transition: opacity 0.5s ease; }
 .hint-fade-leave-to { opacity: 0; }
 </style>
