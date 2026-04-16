@@ -93,7 +93,7 @@
       <Transition name="lb">
         <div
           v-if="lightboxIndex !== null"
-          class="fixed inset-0 z-[200] flex items-center justify-center bg-black/90 backdrop-blur-sm"
+          class="fixed inset-0 z-[200] flex items-center justify-center bg-black/92"
           @click.self="closeLightbox"
           @keydown.esc="closeLightbox"
         >

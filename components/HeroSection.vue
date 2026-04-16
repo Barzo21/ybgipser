@@ -3,9 +3,8 @@
     <!-- Animated brush stroke background -->
     <AnimatedWire />
 
-    <!-- Warm glow blobs -->
-    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-amber-100/40 rounded-full blur-[140px] pointer-events-none" />
-    <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-yellow-100/50 rounded-full blur-[100px] pointer-events-none" />
+    <!-- Warm glow (CSS gradient, no blur filter) -->
+    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-amber-100/30 rounded-full pointer-events-none" style="filter:none" />
 
     <!-- Gradient fade bottom -->
     <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white pointer-events-none" />

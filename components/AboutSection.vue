@@ -1,7 +1,7 @@
 <template>
   <section id="ueber-uns" class="py-32 bg-white relative overflow-hidden">
     <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-amber-50/50 to-transparent pointer-events-none" />
-    <div class="absolute bottom-0 left-0 w-64 h-64 bg-yellow-50 rounded-full blur-3xl pointer-events-none" />
+    <div class="absolute bottom-0 left-0 w-64 h-64 bg-yellow-50/60 rounded-full pointer-events-none" />
 
     <div class="max-w-6xl mx-auto px-6">
       <div class="grid lg:grid-cols-2 gap-16 xl:gap-24 items-center">
@@ -45,7 +45,7 @@
           <div class="relative">
             <!-- Main card -->
             <div class="relative bg-white rounded-3xl p-8 border border-stone-200 overflow-hidden shadow-xl shadow-stone-100">
-              <div class="absolute top-0 right-0 w-48 h-48 bg-amber-50 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
+              <div class="absolute top-0 right-0 w-48 h-48 bg-amber-50 rounded-full -translate-y-1/2 translate-x-1/2" />
 
               <!-- Icon -->
               <div class="w-16 h-16 bg-gradient-to-br from-amber-500 to-yellow-400 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-amber-200 animate-float">

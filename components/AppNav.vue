@@ -3,8 +3,8 @@
     class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
     :class="
       scrolled
-        ? 'bg-white/95 backdrop-blur-xl border-b border-stone-200 shadow-sm shadow-stone-100'
-        : 'bg-white/85 backdrop-blur-md'
+        ? 'bg-white border-b border-stone-200 shadow-sm shadow-stone-100'
+        : 'bg-white/95'
     "
   >
     <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">

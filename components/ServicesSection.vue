@@ -1,6 +1,6 @@
 <template>
   <section id="leistungen" class="py-32 relative overflow-hidden bg-stone-50">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-amber-100/30 rounded-full blur-3xl pointer-events-none" />
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-amber-100/20 rounded-full pointer-events-none" />
 
     <div class="relative max-w-6xl mx-auto px-6">
       <!-- Header -->

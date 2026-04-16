@@ -43,12 +43,12 @@
 
     <!-- Labels -->
     <div class="absolute bottom-4 left-4 z-10 pointer-events-none">
-      <span class="px-3 py-1.5 rounded-lg bg-stone-900/80 text-white text-xs font-bold uppercase tracking-widest backdrop-blur-sm">
+      <span class="px-3 py-1.5 rounded-lg bg-stone-900/80 text-white text-xs font-bold uppercase tracking-widest bg-opacity-90">
         Vorher
       </span>
     </div>
     <div class="absolute bottom-4 right-4 z-10 pointer-events-none">
-      <span class="px-3 py-1.5 rounded-lg bg-amber-500/90 text-white text-xs font-bold uppercase tracking-widest backdrop-blur-sm">
+      <span class="px-3 py-1.5 rounded-lg bg-amber-500/90 text-white text-xs font-bold uppercase tracking-widest bg-opacity-90">
         Nachher
       </span>
     </div>
@@ -56,7 +56,7 @@
     <!-- Drag hint -->
     <Transition name="hint-fade">
       <div v-if="showHint" class="absolute inset-0 flex items-center justify-center z-30 pointer-events-none">
-        <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-black/50 text-white text-xs font-medium backdrop-blur-sm animate-pulse">
+        <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-black/50 text-white text-xs font-medium bg-opacity-90 animate-pulse">
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l-4 3 4 3M16 9l4 3-4 3" />
           </svg>

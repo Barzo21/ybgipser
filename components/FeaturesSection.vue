@@ -1,6 +1,6 @@
 <template>
   <section id="warum-wir" class="py-32 bg-white relative overflow-hidden">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-50/80 rounded-full blur-[120px] pointer-events-none" />
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-50/60 rounded-full pointer-events-none" />
 
     <div class="relative max-w-6xl mx-auto px-6">
       <!-- Header -->
