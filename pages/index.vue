@@ -14,11 +14,11 @@
 
 <script setup lang="ts">
 useSeoMeta({
-  title: 'ElektroProfi – Ihr Elektrofachbetrieb',
+  title: 'YBGIBSER',
   description:
-    'Professionelle Elektroinstallation, Wartung, Smart Home und Reparaturen. Ihr zertifizierter Elektrofachbetrieb – schnell, zuverlässig, modern.',
-  ogTitle: 'ElektroProfi – Ihr Elektrofachbetrieb',
-  ogDescription: 'Ihr zertifizierter Partner für alle Elektroarbeiten – von der Installation bis zum Smart Home.',
+    'Y.B. Gipser GmbH – Ihr Spezialist für Trockenbau, Innenputz, Außenputz und Fassadengestaltung. Meisterbetrieb mit höchster Qualität und Präzision.',
+  ogTitle: 'YBGIBSER',
+  ogDescription: 'Ihr Spezialist für Trockenbau, Innenputz, Außenputz und Fassadengestaltung.',
 })
 
 const { initReveal } = useScrollReveal()

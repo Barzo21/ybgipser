@@ -4,6 +4,10 @@
   </div>
 </template>
 
+<script setup lang="ts">
+useHead({ title: 'YBGIBSER' })
+</script>
+
 <style>
 .page-enter-active,
 .page-leave-active {
