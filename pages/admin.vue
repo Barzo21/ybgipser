@@ -54,9 +54,6 @@
           {{ loading ? 'Laden...' : 'Anmelden' }}
         </button>
 
-        <a href="/admin/setup" class="block text-center text-stone-600 hover:text-stone-400 text-xs transition-colors">
-          2FA noch nicht eingerichtet? →
-        </a>
       </form>
     </div>
   </div>
@@ -180,8 +177,8 @@ async function login() {
     token.value = res.token
     localStorage.setItem('admin_token', res.token)
     await fetchMessages()
-  } catch {
-    loginError.value = 'Benutzername oder Passwort falsch'
+  } catch (e: any) {
+    loginError.value = e?.data?.message || e?.message || 'Anmeldung fehlgeschlagen'
   } finally {
     loading.value = false
   }
@@ -193,8 +190,13 @@ async function fetchMessages() {
     messages.value = await $fetch<Message[]>('/api/admin/messages', {
       headers: { authorization: `Bearer ${token.value}` },
     })
-  } catch {
-    logout()
+  } catch (e: any) {
+    // Sadece 401 gelirse logout yap, diğer hatalar boş liste göster
+    if (e?.status === 401 || e?.statusCode === 401) {
+      logout()
+    } else {
+      messages.value = []
+    }
   } finally {
     loading.value = false
   }
