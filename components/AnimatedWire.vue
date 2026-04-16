@@ -6,7 +6,7 @@
       preserveAspectRatio="xMidYMid slice"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <!-- Statik arka plan çizgileri (filtre yok) -->
+      <!-- Statik arka plan çizgileri -->
       <path
         d="M-100,300 C200,220 500,380 800,300 S1100,220 1540,290"
         fill="none" stroke="rgba(245,158,11,0.10)" stroke-width="60" stroke-linecap="round"
@@ -24,43 +24,48 @@
         fill="none" stroke="rgba(234,179,8,0.05)" stroke-width="25" stroke-linecap="round"
       />
 
-      <!-- Animasyonlu çizgiler (filtre kaldırıldı — GPU yükü azaltıldı) -->
+      <!-- Geniş glow katmanı — CSS opacity ile soluklaşır (SVG filter yok) -->
+      <path
+        class="stroke-anim-1 glow-layer"
+        d="M-100,300 C200,220 500,380 800,300 S1100,220 1540,290"
+        fill="none"
+        stroke="rgba(245,158,11,0.28)"
+        stroke-width="70"
+        stroke-linecap="round"
+        stroke-dasharray="700 400"
+      />
+      <!-- İnce keskin çizgi üstünde -->
       <path
         class="stroke-anim-1"
         d="M-100,300 C200,220 500,380 800,300 S1100,220 1540,290"
         fill="none"
-        stroke="rgba(245,158,11,0.20)"
-        stroke-width="55"
+        stroke="rgba(245,158,11,0.55)"
+        stroke-width="2.5"
         stroke-linecap="round"
         stroke-dasharray="700 400"
       />
+
+      <!-- Alt sweep glow -->
       <path
-        class="stroke-anim-2"
-        d="M-100,300 C200,220 500,380 800,300 S1100,220 1540,290"
+        class="stroke-anim-3 glow-layer"
+        d="M-100,600 C300,520 600,680 900,600 S1200,520 1540,590"
         fill="none"
-        stroke="rgba(245,158,11,0.45)"
-        stroke-width="2.5"
+        stroke="rgba(234,179,8,0.22)"
+        stroke-width="55"
         stroke-linecap="round"
-        stroke-dasharray="80 40"
+        stroke-dasharray="600 500"
       />
       <path
         class="stroke-anim-3"
         d="M-100,600 C300,520 600,680 900,600 S1200,520 1540,590"
         fill="none"
-        stroke="rgba(234,179,8,0.16)"
-        stroke-width="40"
+        stroke="rgba(234,179,8,0.45)"
+        stroke-width="2"
         stroke-linecap="round"
         stroke-dasharray="600 500"
       />
-      <path
-        class="stroke-anim-4"
-        d="M-100,600 C300,520 600,680 900,600 S1200,520 1540,590"
-        fill="none"
-        stroke="rgba(234,179,8,0.40)"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-dasharray="60 50"
-      />
+
+      <!-- Dikey sol -->
       <path
         class="stroke-anim-5"
         d="M200,-60 C180,200 220,450 195,680 S175,820 200,940"
@@ -70,6 +75,8 @@
         stroke-linecap="round"
         stroke-dasharray="400 600"
       />
+
+      <!-- Dikey sağ -->
       <path
         class="stroke-anim-6"
         d="M1200,-60 C1180,180 1220,400 1195,650 S1175,820 1200,940"
@@ -79,6 +86,12 @@
         stroke-linecap="round"
         stroke-dasharray="350 650"
       />
+
+      <!-- Parlayan noktalar — opacity animasyonu (SVG filter yok) -->
+      <circle class="drop-1" cx="360"  cy="295" r="6"   fill="rgba(245,158,11,0.7)" />
+      <circle class="drop-2" cx="800"  cy="300" r="5"   fill="rgba(250,204,21,0.8)" />
+      <circle class="drop-3" cx="1150" cy="288" r="6"   fill="rgba(245,158,11,0.65)" />
+      <circle class="drop-4" cx="580"  cy="598" r="4.5" fill="rgba(234,179,8,0.6)" />
     </svg>
   </div>
 </template>
@@ -96,18 +109,32 @@
   from { stroke-dashoffset: 1000; }
   to   { stroke-dashoffset: 0; }
 }
+@keyframes dropPulse {
+  0%, 100% { opacity: 0; }
+  40%, 60%  { opacity: 1; }
+}
+/* Glow katmanı için ekstra opacity pulse — SVG filter yerine */
+@keyframes glowBreath {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1; }
+}
 
 .stroke-anim-1 { animation: strokeFlow        5s  linear infinite; will-change: stroke-dashoffset; }
-.stroke-anim-2 { animation: strokeFlow        3.5s linear infinite; animation-delay: -1s; will-change: stroke-dashoffset; }
 .stroke-anim-3 { animation: strokeFlowReverse 6s  linear infinite; animation-delay: -2s; will-change: stroke-dashoffset; }
-.stroke-anim-4 { animation: strokeFlowReverse 4.5s linear infinite; animation-delay: -1.5s; will-change: stroke-dashoffset; }
 .stroke-anim-5 { animation: strokeFlowVert    8s  linear infinite; will-change: stroke-dashoffset; }
 .stroke-anim-6 { animation: strokeFlowVert    10s linear infinite; animation-delay: -4s; will-change: stroke-dashoffset; }
 
-/* Hareketi azalt tercihine saygı */
+.glow-layer { animation: strokeFlow 5s linear infinite, glowBreath 3s ease-in-out infinite; }
+.stroke-anim-3.glow-layer { animation: strokeFlowReverse 6s linear infinite -2s, glowBreath 4s ease-in-out infinite; }
+
+.drop-1 { animation: dropPulse 3s   ease-in-out infinite; will-change: opacity; }
+.drop-2 { animation: dropPulse 3.8s ease-in-out infinite; animation-delay: -1.2s; will-change: opacity; }
+.drop-3 { animation: dropPulse 2.8s ease-in-out infinite; animation-delay: -2s;  will-change: opacity; }
+.drop-4 { animation: dropPulse 4s   ease-in-out infinite; animation-delay: -0.7s; will-change: opacity; }
+
 @media (prefers-reduced-motion: reduce) {
-  .stroke-anim-1, .stroke-anim-2, .stroke-anim-3,
-  .stroke-anim-4, .stroke-anim-5, .stroke-anim-6 {
+  .stroke-anim-1, .stroke-anim-3, .stroke-anim-5, .stroke-anim-6,
+  .glow-layer, .drop-1, .drop-2, .drop-3, .drop-4 {
     animation: none;
   }
 }
