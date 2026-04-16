@@ -1,6 +1,6 @@
 <template>
   <section id="projekte" class="py-32 bg-white relative overflow-hidden">
-    <div class="absolute top-0 right-0 w-96 h-96 bg-amber-50/60 rounded-full blur-3xl pointer-events-none" />
+    <div class="absolute top-0 right-0 w-96 h-96 bg-amber-50/40 rounded-full pointer-events-none" />
 
     <div class="max-w-6xl mx-auto px-6">
       <!-- Header -->
