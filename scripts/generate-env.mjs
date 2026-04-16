@@ -13,10 +13,9 @@ if (existsSync(envPath)) {
 const jwtSecret  = randomBytes(48).toString('base64url')
 const adminPass  = randomBytes(16).toString('base64url')
 const adminUser  = 'admin'
-// TOTP secret: Base32 uyumlu (A-Z, 2-7) — 20 byte = 32 base32 karakter
-const totpSecret = randomBytes(20).toString('hex').toUpperCase()
-  .replace(/[89ABCDEF]/g, c => String.fromCharCode(65 + parseInt(c, 16) % 8))
-  .slice(0, 32)
+// TOTP secret: Base32 alfabe (A-Z + 2-7), 20 byte = 32 karakter
+const BASE32 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567'
+const totpSecret = Array.from(randomBytes(20)).map(b => BASE32[b % 32]).join('')
 
 const content = `# Admin Panel
 ADMIN_USERNAME=${adminUser}
