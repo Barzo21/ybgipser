@@ -29,12 +29,6 @@
             Ihr Meisterbetrieb für professionellen Trockenbau, Verputze und
             Fassadengestaltung – Qualität, die man sieht.
           </p>
-          <div class="flex gap-2.5">
-            <a v-for="social in socials" :key="social.label" href="#" :aria-label="social.label"
-              class="w-9 h-9 bg-stone-800 border border-stone-700 rounded-lg flex items-center justify-center text-stone-400 hover:text-amber-400 hover:border-amber-500/50 transition-all duration-200">
-              <span class="text-xs font-bold">{{ social.abbr }}</span>
-            </a>
-          </div>
         </div>
 
         <!-- Links -->
@@ -92,11 +86,6 @@
 <script setup lang="ts">
 const currentYear = new Date().getFullYear()
 const logoSrc = '/1.png'
-const socials = [
-  { label: 'Facebook', abbr: 'f' },
-  { label: 'Instagram', abbr: 'ig' },
-  { label: 'Google', abbr: 'g' },
-]
 const serviceLinks = ['Trockenbau', 'Innenputz / Verputze', 'Fassaden', 'Renovierung', 'Kostenlose Beratung']
 const legalLinks = ['Impressum', 'Datenschutz', 'AGB']
 </script>
