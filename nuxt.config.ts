@@ -20,6 +20,7 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
+    // Güvenlik başlıkları — tüm sayfalar
     '/**': {
       headers: {
         'X-Content-Type-Options': 'nosniff',
@@ -28,6 +29,27 @@ export default defineNuxtConfig({
         'Referrer-Policy': 'strict-origin-when-cross-origin',
         'Permissions-Policy': 'geolocation=(), microphone=(), camera=()',
       },
+    },
+    // Resimler: 1 yıl cache (hash'li dosyalar değişince URL değişir)
+    '/projekte/**': {
+      headers: { 'Cache-Control': 'public, max-age=86400, stale-while-revalidate=3600' },
+    },
+    '/_nuxt/**': {
+      headers: { 'Cache-Control': 'public, max-age=31536000, immutable' },
+    },
+    // Statik dosyalar (favicon, logo vb.): 1 gün
+    '/*.png': {
+      headers: { 'Cache-Control': 'public, max-age=86400' },
+    },
+    '/*.jpg': {
+      headers: { 'Cache-Control': 'public, max-age=86400' },
+    },
+    '/*.jpeg': {
+      headers: { 'Cache-Control': 'public, max-age=86400' },
+    },
+    // API yanıtları: cache yok
+    '/api/**': {
+      headers: { 'Cache-Control': 'no-store' },
     },
   },
   app: {
