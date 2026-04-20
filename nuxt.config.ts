@@ -68,6 +68,7 @@ export default defineNuxtConfig({
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'theme-color', content: '#f59e0b' },
+        { name: 'google-site-verification', content: 'u0k0AoKaISMUlQssCz5XMzRySK0P2wX6QkRMV1xUhQ0' },
         { name: 'geo.region',    content: 'CH-AG' },
         { name: 'geo.placename', content: 'Rheinfelden, Basel' },
         { name: 'geo.position',  content: '47.5556;7.7955' },
