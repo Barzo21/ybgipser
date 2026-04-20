@@ -18,18 +18,6 @@ export default defineNuxtConfig({
         base: process.env.PROJECTS_STORAGE_PATH || './.data/projects',
       },
     },
-    publicAssets: [
-      {
-        baseURL: '/projekte',
-        dir: 'public/projekte',
-        maxAge: 60 * 60 * 24, // 1 gün
-      },
-      {
-        baseURL: '/',
-        dir: 'public',
-        maxAge: 60 * 60 * 24,
-      },
-    ],
   },
   routeRules: {
     // Güvenlik başlıkları — tüm sayfalar
