@@ -297,7 +297,8 @@ async function deleteData() {
 }
 
 useSeoMeta({
-  title: 'Ihre Datenschutzrechte (nFDPA) – Y.B. Gipser GmbH',
-  description: 'Exportieren oder löschen Sie Ihre persönlichen Daten gemäß dem Bundesgesetz über den Datenschutz (nFDPA)',
+  title: 'Datenschutzrechte',
+  description: 'Ihre Datenschutzrechte gemäß nFDPA – Daten exportieren oder löschen.',
+  robots: 'noindex, nofollow',
 })
 </script>

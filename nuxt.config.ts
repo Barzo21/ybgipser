@@ -1,3 +1,5 @@
+const SITE_URL = 'https://www.ybgipser.ch'
+
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: false },
@@ -7,6 +9,7 @@ export default defineNuxtConfig({
     fallback: 'light',
   },
   css: ['~/assets/css/main.css'],
+
   nitro: {
     storage: {
       messages: {
@@ -19,8 +22,8 @@ export default defineNuxtConfig({
       },
     },
   },
+
   routeRules: {
-    // Güvenlik başlıkları — tüm sayfalar
     '/**': {
       headers: {
         'X-Content-Type-Options': 'nosniff',
@@ -30,43 +33,43 @@ export default defineNuxtConfig({
         'Permissions-Policy': 'geolocation=(), microphone=(), camera=()',
       },
     },
-    // Resimler: 1 yıl cache (hash'li dosyalar değişince URL değişir)
     '/projekte/**': {
       headers: { 'Cache-Control': 'public, max-age=86400, stale-while-revalidate=3600' },
     },
     '/_nuxt/**': {
       headers: { 'Cache-Control': 'public, max-age=31536000, immutable' },
     },
-    // Statik dosyalar (favicon, logo vb.): 1 gün
-    '/*.png': {
-      headers: { 'Cache-Control': 'public, max-age=86400' },
-    },
-    '/*.jpg': {
-      headers: { 'Cache-Control': 'public, max-age=86400' },
-    },
-    '/*.jpeg': {
-      headers: { 'Cache-Control': 'public, max-age=86400' },
-    },
-    // API yanıtları: cache yok
-    '/api/**': {
-      headers: { 'Cache-Control': 'no-store' },
-    },
+    '/*.png':  { headers: { 'Cache-Control': 'public, max-age=86400' } },
+    '/*.jpg':  { headers: { 'Cache-Control': 'public, max-age=86400' } },
+    '/*.jpeg': { headers: { 'Cache-Control': 'public, max-age=86400' } },
+    '/api/**': { headers: { 'Cache-Control': 'no-store' } },
   },
+
   app: {
     head: {
-      title: 'ybgipser',
-      htmlAttrs: { lang: 'de' },
+      titleTemplate: '%s | Y.B. Gipser GmbH',
+      htmlAttrs: { lang: 'de-CH' },
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        {
-          name: 'description',
-          content:
-            'Y.B. Gipser GmbH – Ihr Spezialist für Trockenbau, Innenputz, Außenputz und Fassadengestaltung. Meisterbetrieb mit höchster Qualität und Präzision.',
-        },
-        { name: 'theme-color', content: '#ffffff' },
-        // GDPR/nFDPA compliance meta
+        { name: 'theme-color', content: '#f59e0b' },
         { name: 'robots', content: 'index, follow' },
+        // Geo — Basel-Region / Rheinfelden
+        { name: 'geo.region',    content: 'CH-AG' },
+        { name: 'geo.placename', content: 'Rheinfelden, Basel' },
+        { name: 'geo.position',  content: '47.5556;7.7955' },
+        { name: 'ICBM',          content: '47.5556, 7.7955' },
+        // Open Graph (defaults — per-page override mümkün)
+        { property: 'og:site_name', content: 'Y.B. Gipser GmbH' },
+        { property: 'og:locale',    content: 'de_CH' },
+        { property: 'og:type',      content: 'website' },
+        { property: 'og:image',       content: `${SITE_URL}/og-image.jpg` },
+        { property: 'og:image:width',  content: '1200' },
+        { property: 'og:image:height', content: '630' },
+        { property: 'og:image:alt',    content: 'Y.B. Gipser GmbH – Trockenbau & Verputze Basel' },
+        // Twitter Card
+        { name: 'twitter:card',  content: 'summary_large_image' },
+        { name: 'twitter:image', content: `${SITE_URL}/og-image.jpg` },
       ],
       link: [
         { rel: 'icon', type: 'image/png', href: '/1.png' },
@@ -80,8 +83,6 @@ export default defineNuxtConfig({
     },
     pageTransition: { name: 'page', mode: 'out-in' },
   },
-  // Nuxt UI config
-  ui: {
-    global: true,
-  },
+
+  ui: { global: true },
 })

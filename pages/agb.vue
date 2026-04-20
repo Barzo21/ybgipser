@@ -204,7 +204,8 @@
 
 <script setup lang="ts">
 useSeoMeta({
-  title: 'Allgemeine Geschäftsbedingungen (AGB) – Y.B. Gipser GmbH',
-  description: 'AGB nach Schweizer Recht (OR) - Trockenbau und Verputz-Dienstleistungen',
+  title: 'AGB',
+  description: 'Allgemeine Geschäftsbedingungen der Y.B. Gipser GmbH nach Schweizer Recht (OR) für Trockenbau- und Gipserarbeiten.',
+  robots: 'noindex, follow',
 })
 </script>

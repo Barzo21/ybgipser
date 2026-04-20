@@ -191,7 +191,8 @@
 
 <script setup lang="ts">
 useSeoMeta({
-  title: 'Datenschutzerklärung – Y.B. Gipser GmbH',
-  description: 'Datenschutzerklärung nach Schweizer Recht (nFDPA). Erfahren Sie, wie wir Ihre Daten verarbeiten und schützen.',
+  title: 'Datenschutzerklärung',
+  description: 'Datenschutzerklärung der Y.B. Gipser GmbH nach Schweizer nFDPA. Erfahren Sie, wie wir Ihre Daten verarbeiten und schützen.',
+  robots: 'noindex, follow',
 })
 </script>

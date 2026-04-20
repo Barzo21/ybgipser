@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin/
+Disallow: /api/
+Disallow: /datenschutz-rechte
+
+Sitemap: https://www.ybgipser.ch/sitemap.xml

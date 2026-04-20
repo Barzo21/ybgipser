@@ -187,7 +187,8 @@
 const currentYear = new Date().getFullYear()
 
 useSeoMeta({
-  title: 'Impressum – Y.B. Gipser GmbH',
-  description: 'Rechtliche Angaben und Impressum von Y.B. Gipser GmbH - Trockenbau und Verputz',
+  title: 'Impressum',
+  description: 'Impressum und rechtliche Angaben der Y.B. Gipser GmbH, 4310 Rheinfelden – Meisterbetrieb für Trockenbau, Verputze und Fassaden in der Region Basel.',
+  robots: 'noindex, follow',
 })
 </script>
