@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-useHead({ title: 'YBGIBSER' })
+useHead({ title: 'Y.B. Gipser GmbH' })
 </script>
 
 <style>

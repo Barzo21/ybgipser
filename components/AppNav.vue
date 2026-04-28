@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <nav
     class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
     :class="
@@ -44,7 +44,7 @@
         <!-- Hamburger -->
         <button
           class="md:hidden relative w-9 h-9 flex flex-col items-center justify-center gap-1.5 rounded-lg hover:bg-stone-100 transition-colors"
-          :aria-label="menuOpen ? 'Menü schließen' : 'Menü öffnen'"
+          :aria-label="menuOpen ? 'Menü schliessen' : 'Menü öffnen'"
           @click="menuOpen = !menuOpen"
         >
           <span

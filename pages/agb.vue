@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div>
     <AppNav />
     <main class="bg-white pt-20">
@@ -29,7 +29,7 @@
             <ul class="list-disc list-inside text-stone-700 space-y-2">
               <li>Trockenbau</li>
               <li>Innenputz und Verputze</li>
-              <li>Fassaden und Außenputz</li>
+              <li>Fassaden und Aussenputz</li>
               <li>Renovierung und Sanierung</li>
               <li>Kostenlose Beratung und Besichtigungen</li>
             </ul>
@@ -138,7 +138,7 @@
               <li>Indirekte Schäden oder entgangene Gewinne</li>
             </ul>
             <p class="text-stone-700">
-              8.4 Der Kunde muss eine angemessene Baustellen-Versicherung abschließen.
+              8.4 Der Kunde muss eine angemessene Baustellen-Versicherung abschliessen.
             </p>
           </div>
 

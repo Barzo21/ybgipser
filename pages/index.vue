@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div>
     <AppNav />
     <main>
@@ -18,7 +18,7 @@ const SITE_URL = 'https://www.ybgipser.ch'
 // ── Meta tags ──────────────────────────────────────────────
 useSeoMeta({
   title: 'Gipser Basel & Rheinfelden – Trockenbau, Verputze & Fassaden',
-  description: 'Y.B. Gipser GmbH – Meisterbetrieb für Trockenbau, Innenputz, Außenputz und Fassadengestaltung in Basel und Rheinfelden. Kostenlose Offerte in 48h. ☎ 079 335 78 75',
+  description: 'Y.B. Gipser GmbH – Meisterbetrieb für Trockenbau, Innenputz, Aussenputz und Fassadengestaltung in Basel und Rheinfelden. Kostenlose Offerte in 48h. ☎ 079 335 78 75',
   ogTitle: 'Y.B. Gipser GmbH – Trockenbau & Verputze Basel',
   ogDescription: 'Meisterbetrieb für Trockenbau, Verputze und Fassaden in der Region Basel. Kostenlose Offerte in 48 Stunden.',
   ogUrl: SITE_URL,
@@ -42,7 +42,7 @@ useHead({
             '@type': ['LocalBusiness', 'HomeAndConstructionBusiness'],
             '@id': `${SITE_URL}/#business`,
             name: 'Y.B. Gipser GmbH',
-            description: 'Meisterbetrieb für Trockenbau, Innenputz, Außenputz und Fassadengestaltung in der Region Basel.',
+            description: 'Meisterbetrieb für Trockenbau, Innenputz, Aussenputz und Fassadengestaltung in der Region Basel.',
             url: SITE_URL,
             telephone: '+41793357875',
             email: 'info@ybgipser.ch',
@@ -93,7 +93,7 @@ useHead({
                 },
                 {
                   '@type': 'Offer',
-                  itemOffered: { '@type': 'Service', name: 'Fassaden & Außenputz Basel', description: 'Außenputz, WDVS und Fassadengestaltung in der Nordwestschweiz.' },
+                  itemOffered: { '@type': 'Service', name: 'Fassaden & Aussenputz Basel', description: 'Aussenputz, WDVS und Fassadengestaltung in der Nordwestschweiz.' },
                 },
                 {
                   '@type': 'Offer',

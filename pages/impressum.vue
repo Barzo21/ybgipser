@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div>
     <AppNav />
     <main class="bg-white pt-20">
@@ -37,7 +37,7 @@
               </div>
               <div>
                 <p class="text-stone-500 text-sm uppercase tracking-wider font-semibold mb-1">Geschäftstätigkeit</p>
-                <p class="text-stone-900">Trockenbau, Innenputz, Außenputz, Fassadengestaltung, Renovierung und Sanierung</p>
+                <p class="text-stone-900">Trockenbau, Innenputz, Aussenputz, Fassadengestaltung, Renovierung und Sanierung</p>
               </div>
             </div>
           </div>

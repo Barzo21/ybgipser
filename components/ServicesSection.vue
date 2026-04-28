@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <section id="leistungen" class="py-32 relative overflow-hidden bg-stone-50">
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-amber-100/20 rounded-full pointer-events-none" />
 
@@ -119,7 +119,7 @@ const services = [
   {
     icon: IconHome,
     title: 'Fassaden',
-    description: 'Außenputz, Wärmedämmverbundsysteme (WDVS) und Fassadengestaltung für ein perfektes Erscheinungsbild.',
+    description: 'Aussenputz, Wärmedämmverbundsysteme (WDVS) und Fassadengestaltung für ein perfektes Erscheinungsbild.',
     iconBg: 'bg-gradient-to-br from-amber-600 to-amber-500',
   },
   {

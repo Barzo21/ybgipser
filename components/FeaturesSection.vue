@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <section id="warum-wir" class="py-32 bg-white relative overflow-hidden">
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-50/60 rounded-full pointer-events-none" />
 
@@ -85,7 +85,7 @@ const features = [
   {
     emoji: '🏆',
     title: 'Meisterbetrieb & Qualität',
-    body: 'Als eingetragener Meisterbetrieb garantieren wir höchste Ausführungsqualität. Jede Oberfläche wird mit größter Sorgfalt und Präzision fertiggestellt.',
+    body: 'Als eingetragener Meisterbetrieb garantieren wir höchste Ausführungsqualität. Jede Oberfläche wird mit grösster Sorgfalt und Präzision fertiggestellt.',
     iconBg: 'bg-gradient-to-br from-amber-100 to-yellow-50',
   },
   {

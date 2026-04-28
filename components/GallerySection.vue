@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <section id="projekte" class="py-32 bg-white relative overflow-hidden">
     <div class="absolute top-0 right-0 w-96 h-96 bg-amber-50/40 rounded-full pointer-events-none" />
 
@@ -101,7 +101,7 @@
           <button
             class="absolute top-5 right-5 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
             @click="closeLightbox"
-            aria-label="Schließen"
+            aria-label="Schliessen"
           >
             <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />

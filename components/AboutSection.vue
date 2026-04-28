@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <section id="ueber-uns" class="py-32 bg-white relative overflow-hidden">
     <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-amber-50/50 to-transparent pointer-events-none" />
     <div class="absolute bottom-0 left-0 w-64 h-64 bg-yellow-50/60 rounded-full pointer-events-none" />
@@ -23,7 +23,7 @@
             Unsere erfahrenen Fachleute arbeiten präzise, sauber und immer termingerecht.
           </p>
           <p class="text-stone-500 leading-relaxed mb-10">
-            Ob moderner Innenausbau, professioneller Innenputz oder hochwertiger Außenputz –
+            Ob moderner Innenausbau, professioneller Innenputz oder hochwertiger Aussenputz –
             wir bringen jedes Projekt zur Vollendung. Qualitätsbewusstsein und persönliche
             Betreuung sind für uns keine Versprechen, sondern gelebter Alltag.
           </p>

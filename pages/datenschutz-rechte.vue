@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div>
     <AppNav />
     <main class="bg-white pt-20">
@@ -15,7 +15,7 @@
         <div class="space-y-12">
           <!-- Introduction -->
           <div class="bg-amber-50 p-8 rounded-2xl border border-amber-200">
-            <h2 class="text-2xl font-bold text-amber-900 mb-4">Ihre Rechte gemäß nFDPA</h2>
+            <h2 class="text-2xl font-bold text-amber-900 mb-4">Ihre Rechte gemäss nFDPA</h2>
             <p class="text-amber-800 mb-3">
               Nach dem Bundesgesetz über den Datenschutz (nFDPA) haben Sie das Recht:
             </p>
@@ -298,7 +298,7 @@ async function deleteData() {
 
 useSeoMeta({
   title: 'Datenschutzrechte',
-  description: 'Ihre Datenschutzrechte gemäß nFDPA – Daten exportieren oder löschen.',
+  description: 'Ihre Datenschutzrechte gemäss nFDPA – Daten exportieren oder löschen.',
   robots: 'noindex, nofollow',
 })
 </script>

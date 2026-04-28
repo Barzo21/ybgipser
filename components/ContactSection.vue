@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <section id="kontakt" class="py-32 relative overflow-hidden bg-stone-50">
     <div class="absolute top-0 left-1/3 w-80 h-80 bg-amber-100/40 rounded-full blur-3xl pointer-events-none" />
 
@@ -95,7 +95,7 @@
                   <option value="">Bitte wählen...</option>
                   <option>Trockenbau</option>
                   <option>Innenputz / Verputze</option>
-                  <option>Fassade / Außenputz</option>
+                  <option>Fassade / Aussenputz</option>
                   <option>Renovierung / Sanierung</option>
                   <option>Sonstiges</option>
                 </select>
@@ -121,7 +121,7 @@
                     <NuxtLink to="/datenschutz" class="text-amber-700 hover:text-amber-800 font-semibold underline" target="_blank">
                       Datenschutzerklärung
                     </NuxtLink>
-                    und erlaube die Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage gemäß nFDPA.
+                    und erlaube die Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage gemäss nFDPA.
                   </label>
                 </div>
                 <div class="flex items-start gap-3">
@@ -161,7 +161,7 @@
               </button>
 
               <p class="text-xs text-stone-500 text-center leading-relaxed">
-                Ihre Daten werden gemäß unserer 
+                Ihre Daten werden gemäss unserer 
                 <NuxtLink to="/datenschutz" class="text-amber-600 hover:text-amber-700 font-semibold underline">
                   Datenschutzerklärung
                 </NuxtLink>

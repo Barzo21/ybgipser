@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div>
     <AppNav />
     <main class="bg-white pt-20">
@@ -41,7 +41,7 @@
             <p class="text-stone-700"><strong>Rechtliche Grundlage:</strong> Art. 6 Abs. 1 lit. a nFDPA (Ihre ausdrückliche Einwilligung)</p>
 
             <h3 class="text-xl font-semibold text-stone-800 mt-6 mb-3">2.2 Cookies und Tracking</h3>
-            <p class="text-stone-700">Diese Website verwendet standardmäßig keine Tracking-Cookies. Alle Cookies unterstützen nur die Funktionalität der Website.</p>
+            <p class="text-stone-700">Diese Website verwendet standardmässig keine Tracking-Cookies. Alle Cookies unterstützen nur die Funktionalität der Website.</p>
           </div>
 
           <!-- 3. Datenspeicherung -->
@@ -61,11 +61,11 @@
           <!-- 4. Datensicherheit -->
           <div>
             <h2 class="text-2xl font-bold text-stone-900 mb-4">4. Datensicherheit</h2>
-            <p class="text-stone-700 mb-3">Wir schützen Ihre Daten mit folgenden Maßnahmen:</p>
+            <p class="text-stone-700 mb-3">Wir schützen Ihre Daten mit folgenden Massnahmen:</p>
             <ul class="list-disc list-inside text-stone-700 space-y-2">
               <li>HTTPS-Verschlüsselung für sichere Datenübertragung</li>
               <li>Sichere Server in der Schweiz mit Zugriffskontrolle</li>
-              <li>Regelmäßige Sicherheitsaudits und Penetrationstests</li>
+              <li>Regelmässige Sicherheitsaudits und Penetrationstests</li>
               <li>Zwei-Faktor-Authentifizierung für Administratoren</li>
             </ul>
           </div>
